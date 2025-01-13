@@ -1,185 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>U-Net</title>
-    <url>/2025/01/12/U-Net/</url>
-    <content><![CDATA[<h1 id="U-Net"><a href="#U-Net" class="headerlink" title="U-Net"></a>U-Net</h1><p>​<br>The architecture consists of a contracting path to capture context and a symmetric expanding path that enables precise localization.</p>
-<p>该架构由一个捕捉上下文的收缩路径和一个实现精确定位的对称扩展路径组成</p>
- <span id="more"></span>
-<p><strong>Hence, Ciresan et al.trained a network in a sliding-window setup to predict the class label of each pixel by providing a local region (patch) around that pixel as input.</strong></p>
-<p><strong>This network can localize.</strong></p>
-<p><strong>Two drawbacks: slow and redundant ,trade-off between localization accuracy and the use of context.</strong></p>
-<p>The main idea in fully convolutional network is to supplement a usual contracting network by successive layers, where pooling operators are replaced by upsampling operators.</p>
-<p>全卷积网络的主要思想是通过<strong>连续的层来补充通常的收缩网络，其中池化算子被上采样算子所取代。</strong></p>
-<p>FCN的主要工作是将传统CNN后面的全连接层换成了卷积层，这样网络的输出将是热力图而非类别；同时，为解决卷积和池化导致图像尺寸的变小，使用上采样方式对图像尺寸进行恢复，并且提出一个跳级结构，让pool4和pool3之后的特征图于conv7之后的特征图相加，得到新的更加准确的分割图像。</p>
-<p>这些layers增加了输出的分辨率。为了定位，通过收缩路径(conracting path)的高分辨率特征图和上采样的输出相结合，之后的连续卷积层可以来通过这些信息来学习更加精准的输出。</p>
-<p><strong>对于上采样保留了很多的特征通道，这个网络没有全连接层，只有卷积层。</strong></p>
-<p>只包含卷积就保证了seamless segmentation of arbitrarily large images by an overlap-tile strategy。通过重叠瓦片技术对任意大图形进行无缝分割。通过mirroring the input image.</p>
-<p>To predict the pixels in the border region of the image, the missing context is extrapolated by mirroring the input image. This tiling strategy is important to apply the network to large images, since otherwise the resolution would be limited by the GPU memory.</p>
-<p><strong>针对于数据增广，文章使用了弹性变换的方式，使得网络能够学习对这种变形的不变性，而不需要在注释的图像语料库中看到这些转换。</strong></p>
-<p>对同类型的细胞的分离是很打的一个挑战。文章使用了weighted loss，针对不同地区进行不同的loss学习，让网络对边缘(border)进行学习，达到分离的效果。</p>
-<p>网络结构：</p>
-<p>左边：contracting path(收缩路径) 右边：expansive path(扩展路径)</p>
-<p>Contracting path :重复使用2个没有padding的3<em>3卷积，每个卷积之后包含ReLU和一个2</em>2最大池化（stride=2），同时，在每次下采样的过程中将通道数*2.</p>
-<p>Expansive path : 2<em>2卷积进行上采样同时将通道数/2， 与收缩路径中相应裁剪的特征图相连接，两个3</em>3卷积每个都跟着一个ReLU。Cropping是重要的因为在卷积操作中会造成边缘像素的丢失。</p>
-<p>最后一层有一个1*1的卷积将64个特征向量映射到每个所期待的类别。</p>
-<p>总共有23层。</p>
-<p>为了允许输出分割图的无缝平铺（见图2），重要的是选择输入平铺的大小，使所有2x2的最大池化操作都应用于一个具有偶数x和y大小的层。（换句话说，contracting path中经过卷积和ReLU之后的图像的x，y都是偶数）</p>
-<p>训练：</p>
-<p>To minimize the overhead and make maximum use of the GPU memory, we favor large input tiles over a large batch size and hence reduce the batch to a single image.</p>
-<p>为了最大限度地减少开销和最大限度地利用GPU内存，我们倾向于使用大的输入瓦片而不是大的批处理量，从而将批处理量减少到单一图像。（换句话说就是图像大，batch size小）</p>
-<p>Accordingly we use a high momentum (0.99) such that a large number of the previously seen training samples determine the update in the current optimization step.</p>
-<p>因此，我们使用一个高动量（0.99），这样大量的先前看到的训练样本决定了当前优化步骤中的更新。</p>
-<p>能量函数(energy function)一开始在热力学中被定义，用于描述系统的能量值，当能量值达到最小时系统达到稳定状态。（换句话说就是优化函数）</p>
-<p>energy function： pixel-wise soft-max + Cross entropy</p>
-<p>Weighted map：</p>
-<p>需要有一个好的初始化a good initialization of the weights is extremely important</p>
-<p>Ideally the initial weights should be adapted such that each feature map in the network has approximately unit variance. 理想情况下，初始权重应该被调整，使网络中的每个特征图具有近似的单位方差。</p>
-<p>可以通过一个标准差为  的高斯分布得到。</p>
-<p>Data augmentation</p>
-<p>random elastic deformations is key concept..</p>
-<p>We generate smooth deformations using random displacement vectors on a coarse 3 by 3 grid. The displacements are sampled from a Gaussian distribution with 10 pixels standard deviation. Per-pixel displacements are then computed using bicubic interpolation. Drop-out layers at the end of the contracting path perform further implicit data augmentation</p>
-<p>我们在一个粗略的3乘3的网格上使用随机位移矢量生成平滑的变形。位移是从标准偏差为10像素的高斯分布中采样的。然后使用双三次插值计算每像素的位移。在收缩路径末端的剔除层进行进一步的隐性数据增强</p>
-<p>Reference:</p>
-<p><a href="https://blog.csdn.net/qq_36717487/article/details/115368483">语义分割与实例分割的区别_实例分割和语义分割-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/lsb2002/article/details/132005658">机器学习：监督学习、无监督学习、半监督学习、强化学习-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/qq_41731861/article/details/120511148">FCN（全卷积神经网络）详解-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/maliang_1993/article/details/82020596">仿射和弹性变换（affine and elastic transform）的python实现_图像增强弹性变换-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/u011622208/article/details/112566676">【数据增强】——弹性变形(Elastic Distortion)_数据增强随机弹性变换-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/weixin_36474809/article/details/87931260">Unet论文详解U-Net:Convolutional Networks for Biomedical Image Segmentation-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/gaoxueyi551/article/details/105238182">深度学习中的Momentum算法原理-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/qq_43374104/article/details/106434440">梯度下降优化算法Momentum_momentum梯度下降法-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/hejunqing14/article/details/50057001">能量函数在神经网络中的意义_energy function-CSDN博客</a></p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>论文学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>u-kan</title>
-    <url>/2025/01/12/u-kan/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/jarodyv/article/details/138751803">深入理解 Kolmogorov–Arnold Networks (KAN)_kan: kolmogorov–arnold networks-CSDN博客</a></p>
-<p><a href="https://www.zhihu.com/question/654782350">(5 封私信 / 14 条消息) 如何评价神经网络架构KAN，是否有潜力取代MLP？ - 知乎 (zhihu.com)</a></p>
-<p><a href="https://blog.csdn.net/fg13821267836/article/details/93405572">多层感知机（MLP）简介-CSDN博客</a></p>
-<p>MLP说白了就是最简单的<script type="math/tex">f(w_i×x+b_i)+softmax</script>.</p>
-<p><a href="https://blog.csdn.net/qq_46703208/article/details/130539464">深度学习中的token_深度学习token-CSDN博客</a></p>
-<p>token:最小的单元。在nlp领域，就是一个单词。cv领域，在vit中就是16x16的patch</p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>论文学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Temperature scaling</title>
-    <url>/2025/01/12/Temperature-scaling/</url>
-    <content><![CDATA[<p>Temperature scaling</p>
-<p>后验概率被应用在训练过程之后目的是学习一个重新校准的函数。为了达到这个目的，训练集的一部分被拿出作为校准集。重新校准函数适用于网络的输出（如logit向量），并产生一个改进的校准，该校准是在遗漏的校准集上学习的。<br><span id="more"></span><br>Temperature scaling是data-efficiency的accuracy-preserving方法，但是具有稍微不太好的expressive</p>
-<p>Selective Scaling：</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image002-1736691287914-3.png)</p>
-<p>原始：</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image004-1736691287914-4.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image006-1736691287914-2.png)</p>
-<p>只有卷积：<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image007.png)</p>
-<p>只有池化：</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image009.png)</p>
-<p>只有池化：</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image011.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image013.png)</p>
-<p>1.5</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image015.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image017-1736691287913-1.png)</p>
-<p>1.6：</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image019-1736691287914-5.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image021.png)</p>
-<p>2.0：</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image023.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image025.png)</p>
-<p>1.8+ece做loss</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image027.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image029.png)</p>
-<p>1.8+ece做loss+池化</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image031-1736691287914-6.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image033.png)</p>
+    <title>GPS</title>
+    <url>/2025/01/12/GPS/</url>
+    <content><![CDATA[<hr>
+<p><a href="https://www.semanticscholar.org/paper/Greedy-Policy-Search%3A-A-Simple-Baseline-for-Molchanov-Lyzhov/8286fbad6d4712d950689930720134bc8828963f?sort=relevance&amp;queryString=segmentation"> Greedy Policy Search: A Simple Baseline for Learnable Test-Time Augmentation | Semantic Scholar</a></p>
+<p><a href="https://github.com/SamsungLabs/gps-augment?tab=readme-ov-file">SamsungLabs/gps-augment: Simple but high-performing method for learning a policy of test-time augmentation (github.com)</a></p>
+<span id="more"></span>
+<p>在一个已经训练好的网络上将测试数据增广，利用这些数据来测量网络的不确定性</p>
+<p>GPS（greedy policy search）：a simple algorithm that learns a policy for test-time data augmentation based on the predictive performance on a validation set. </p>
+<p>一个简单的算法，<strong>根据验证集的预测性能</strong>来学习测试时间数据增强的策略。</p>
+<p>In an ablation study, we show that <strong>optimizing the calibrated log-likelihood**</strong>（优化校准的对数似然）<strong> (Ashukha et al., 2020) is </strong>a crucial part<strong> of the policy search algorithm, while the default objectives—</strong>accuracy and loglikelihood—lead to a significant drop in the final performance.**</p>
+<p>定义TTA policy为一系列子政策的集合，每个子政策又包含Ns个连续的图片变换。</p>
+<p>步骤：</p>
+<p>1、 先用CIFAR10数据集训练VGG模型，并用randaugment增广数据</p>
+<p>2、 将这些增广好的数据进行预测处理并选取其中的一部分作为备选池。本文共选取1101个子政策</p>
+<p>3、 用校准的对数似然来评价，选择让可以在聚合预测时提供最大提升的子政策进入pool中</p>
+<p><strong>Prediction通过求不同子政策的平均得到</strong></p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image002-1736691190942-1.jpg)</p>
+<p>GPS的核心算法（利用贪心和校准的对数似然）</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image004-1736691190944-2.png)</p>
+<p>评判标准：校准的对数似然（对数似然加上temperature scaling）</p>
+<p>GPS是一个学习型（learnable）的策略，它在过程中不断选择好的东西放到pool中</p>
+<p>域内的表现不错，但是还可以加上聚合来加强表现。</p>
+<p>原本的指标（metric）是accuracy和log-likelihood。但是LL可能会误把好模型忽略（因为刚好无法校准）但可以用温度缩放来调整回来。cLL可以得到更好的M</p>
+<p>领域转移的健壮性：CIFAR10-C, CIFAR-100-C and ImageNet-C datasets with 15 corruptions C from groups noise, blur, weather and digital.（数据）对每个确定的level都计算错误率，对每个corruption都计算平均</p>
+<p>一般来看，在干净的验证数据上训练的策略对损坏的数据有很好的效果。（换句话说，在哪里GPS效果都很好） transfer GPS policy 效果在不同的数据集上不错</p>
+<p>结合聚合方法效果也不错</p>
+<p>在原始的数据增广上也有不错的表现</p>
+<p>未加valid 5000</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image006-1736691190944-3.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image008-1736691190944-4.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image010-1736691190944-5.png)</p>
+<p>校准之后的数据</p>
+<p>加了valid5000</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image012.jpg)</p>
+<p>训练randaugment</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image014-1736691190944-6.png)</p>
+<p>第一次增广预测</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image016-1736691190944-8.png)</p>
+<p>第二次增广预测</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image018.png)</p>
+<p>第三次增广预测</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image020-1736691190944-7.png)</p>
+<p>第四次增广预测</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image022.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image024-1736691190945-9.png)</p>
+<p>GPS过程</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image026-1736691190945-10.png)评价过程</p>
 <p>Reference：</p>
-<p><a href="https://blog.csdn.net/m0_51233386/article/details/128414228">Ubuntu下tar命令使用详解 .tar解压、.tar压缩_ubuntu解压tar.gz-CSDN博客</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/630739668">Logistic（逻辑斯蒂）函数浅谈 - 知乎 (zhihu.com)</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/335765830">简介欧拉第一类积分：Beta函数 - 知乎 (zhihu.com)</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/63184325">神经网络1：多层感知器-MLP - 知乎 (zhihu.com)</a></p>
-<p><a href="https://blog.csdn.net/lingzhou33/article/details/87901365">语义分割的评价指标——IoU_语义分割iou-CSDN博客</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/33841176">CNN 入门讲解：什么是全连接层（Fully Connected Layer）? - 知乎 (zhihu.com)</a></p>
-<p><a href="https://blog.csdn.net/qq_37369201/article/details/109195257">python中assert的用法（简洁明了）_assert python-CSDN博客</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/666048268">Expected Calibration Error (ECE) - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/620688513">Pytorch格式 .pt .pth .bin .onnx 详解 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://blog.csdn.net/m0_51004308/article/details/118001835">Pytorch学习笔记(七):F.softmax()和F.log_softmax函数详解-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qiankendeNMY/article/details/126508781?spm=1018.2226.3001.9630.1&amp;extra[title]=Python—argparse模块&amp;extra[utm_source]=vip_chatgpt_common_pc_toolbar&amp;extra[utm_medium]=">Python—argparse模块_parser.add_argument(‘—data’, type=str, default=’’-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/tsinghuahui/article/details/89279152">python argparse中action的可选参数store_true的作用_argparse store_true-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/u010804417/article/details/92843528">伪代码书写规则_伪代码怎么写-CSDN博客</a>（在伪码中，符号∅通常表示空集或空值）</p>
+<p><a href="https://zhuanlan.zhihu.com/p/26614750">一文搞懂极大似然估计 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://blog.csdn.net/Elenstone/article/details/105677886">机器学习最易懂之贝叶斯模型详解与python实现_pytorch实现贝叶斯决策模型-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qq_23933415/article/details/111212898">模型的参数verbose用法详解_verbose参数-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/weixin_44912159/article/details/104921422">论文中的常见缩写(w.r.t/i.e./et al等)的意思-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/fengbingchun/article/details/124648766">深度学习中的优化算法之带Momentum的SGD_momentum sgd-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/wangxuecheng666/article/details/109246126">StratifiedShuffleSplit（）函数的详细理解-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qq_37297763/article/details/116847455">Pytorch学习（十三）python中<em>args和*</em>kwargs的用法_pytorch args.-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/Just_do_myself/article/details/123751148?spm=1018.2226.3001.9630.1&amp;extra[title]=深度学习之动态调整学习率LR&amp;extra[utm_source]=vip_chatgpt_common_pc_toolbar&amp;extra[utm_medium]=">深度学习之动态调整学习率LR_动态学习率-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qq_42079689/article/details/102873766">PyTorch的nn.Linear（）详解_nn.linear()-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/weixin_42843425/article/details/122518502">model.parameters()的理解与使用-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qq_41813454/article/details/135129279?spm=1018.2226.3001.9630.1&amp;extra[title]=别再混淆了！model.eval(">别再混淆了！model.eval()和torch.no_grad()的区别一次讲清楚-CSDN博客</a>和torch.no_grad()的区别一次讲清楚&amp;extra[utm_source]=vip_chatgpt_common_pc_toolbar&amp;extra[utm_medium]=)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/38121870">机器学习之K折交叉验证 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://blog.csdn.net/qq_39478403/article/details/121107057">【机器学习】浅谈 归纳偏置 (Inductive Bias)-CSDN博客</a></p>
+<p>· store_true 是指带触发 action 时为真，不触发则为假， 即默认 False ，传参 则 设置为 True<br> · store_false 则与之相反</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image028-1736691190945-11.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image030-1736691190945-12.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image032-1736691190945-13.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image034-1736691190945-14.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image036-1736691190945-16.png)</p>
+<p>enumerate函数，它可以同时返回列表中的元素和它们的索引</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image038-1736691190945-15.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image040-1736691190945-18.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image042.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image044.png)</p>
+<p>ablation study (消融实验）</p>
+<p><a href="https://zhuanlan.zhihu.com/p/644502891">一文搞懂什么是ablation study (消融实验） - 知乎 (zhihu.com)</a><br> adversarial attacks 对抗攻击 在某些微小影响下会导致巨大偏差</p>
+<p><a href="https://zhuanlan.zhihu.com/p/104532285">CV||对抗攻击领域综述（adversarial attack） - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/293065153">Google开箱即用数据增强RandAugment | NeurIPS 2020 - 知乎 (zhihu.com)</a></p>
+<p>原始的自动数据增强方式，先在一个单独的小数据集代理任务（可以理解成小/子数据集，子任务 ）上进行，然后再迁移到更大数据的目标任务中去。作者提出了一种实用的自动数据增强算法RandAugment。该方法无需在子任务上进行搜索验证。但为了减少数据增强的参数搜索空间，作者设计了一种简单的格点搜索（simple grid search）方法以学习/获取一种数据增强的策略。<strong>RandAugment只有两个参数：N和M。 其中N为在每次增强时使用N次操作（使用的这N个操作，都是从操作集中等概率抽取的，例如操作集中有14种操作，则每种操作被选中的概率为1/14，每张图像的N次增强中，选到的操作可能是一样的），M为正整数，表示所有操作在应用时，幅度都为M（旋转多少）</strong>。</p>
+<p><strong>用于数据增广</strong><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image046-1736691190945-17.png)</p>
 ]]></content>
       <categories>
         <category>深度学习</category>
       </categories>
       <tags>
         <tag>校准</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PVT encoder</title>
-    <url>/2025/01/12/PVT-encoder/</url>
-    <content><![CDATA[<h1 id="PVT-encoder"><a href="#PVT-encoder" class="headerlink" title="PVT encoder"></a>PVT encoder</h1><p>use of transformer</p>
-<p>For example, some works model the vision task as a dictionary lookup problem with learnable queries, and use the Transformer decoder as a task-specific head on top of the CNN backbone.</p>
-<p>将视觉任务建模为一个具有可学习查询的字典查询问题，并将Transformer解码器作为CNN主干之上的特定任务头。</p>
-<span id="more"></span>
-<h2 id="ViT"><a href="#ViT" class="headerlink" title="ViT"></a>ViT</h2><p>拥有圆柱形的粗略images patches as input </p>
-<p>shortcomings：</p>
-<ol>
-<li>输出特征图是单尺度而且底分辨率</li>
-<li>计算花销大</li>
-</ol>
-<h2 id="PVT"><a href="#PVT" class="headerlink" title="PVT"></a>PVT</h2><p>a pure transformer backbone </p>
-<p>advantages:</p>
-<ol>
-<li>细粒度(fine-grained)的图像patches 来学习高分辨率表征</li>
-<li>引入一个逐渐减小的金字塔transformer的序列长度，减少计算量</li>
-<li>引入空间降低注意力层(spatial-reduce attention layer)降低在学习高分辨率特征图的开销</li>
-<li>产生全局感受野(global reception field)</li>
-</ol>
-<p><img src="D:\Program Files (x86" alt="image-20240812121219476">\Typora\img-data\image-20240812121219476.png)</p>
-<p>Feature Pyramid for Transformer</p>
-<p>首先将输入特征图分为<script type="math/tex">\frac{H_i W_i}{P_i^2}</script>个patches，将每个patches展平之后并且将其映射到(projected to)<script type="math/tex">C_i</script>维度的embedding，再经过一个线性映射之后，embedded patches可以被视为<script type="math/tex">\frac{H_i-1}{P_i}\times \frac{W_i-1}{P_i} \times C_i</script></p>
-<h2 id="SRA-？"><a href="#SRA-？" class="headerlink" title="SRA ？"></a>SRA ？</h2><p><img src="D:\Program Files (x86" alt="image-20240812152215411">\Typora\img-data\image-20240812152215411.png)</p>
-<p>和MHA(multi-head attention)相似，receive Q K V,它在进行注意力机制之前减少了K和V的空间尺度，显著降低了计算和存贮</p>
-<p><img src="D:\Program Files (x86" alt="image-20240814091739353">\Typora\img-data\image-20240814091739353.png)</p>
-<p>这里和原始transformer一样，只不过K和V先经过了一个空间降低操作。</p>
-<p><img src="D:\Program Files (x86" alt="image-20240814091832785">\Typora\img-data\image-20240814091832785.png)</p>
-<p><img src="D:\Program Files (x86" alt="image-20240814091918147">\Typora\img-data\image-20240814091918147.png)</p>
-<p>hyper parameters:</p>
-<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.192ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 969 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></g><g data-mml-node="mi" transform="translate(675,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: patch size of Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.357ex" height="1.952ex" role="img" focusable="false" viewBox="0 -705 1042 862.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g><g data-mml-node="mi" transform="translate(748,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: channel number of the output of Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.28ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 1008 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mi" transform="translate(714,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: encoder layers number in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.457ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 1086 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path></g><g data-mml-node="mi" transform="translate(792,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: reduction ratio of the SRA in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.556ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 1130 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mi" transform="translate(836,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: head number of the SRA in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.409ex" height="1.895ex" role="img" focusable="false" viewBox="0 -680 1065 837.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path></g><g data-mml-node="mi" transform="translate(771,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: expansion ratio of the feed-forward layer in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
-<p><strong>the rule of ResNet:</strong></p>
-<ol>
-<li><strong>use small output channel numbers in shallow stages</strong></li>
-<li><strong>concentrate the major computation resource in intermediate stages.</strong></li>
-<li><strong>with the growth of network depth, the hidden dimension gradually increases, and the output resolution progressively shrinks</strong></li>
-<li><strong>the major computation resource is concentrated in Stage 3</strong></li>
-</ol>
-<p>the advantages over ViT:</p>
-<ol>
-<li>more flexible—can generate feature maps of different scales/channels in different stages</li>
-<li>more versatile(通用)—can be easily plugged and played in most downstream task models</li>
-<li>more friendly to computation/memory—can handle higher resolution feature maps or longer sequences</li>
-</ol>
-<p>Reference:</p>
-<p><a href="https://blog.csdn.net/qq_38890412/article/details/120601834">全网最通俗易懂的 Self-Attention自注意力机制 讲解_self attention机制-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/weixin_42392454/article/details/122478544">狗都能看懂的Self-Attention讲解-CSDN博客</a></p>
-<p><a href="https://www.bilibili.com/video/BV15v411W78M/?spm_id_from=333.788">https://www.bilibili.com/video/BV15v411W78M/?spm_id_from=333.788</a></p>
-<p><a href="https://blog.csdn.net/oYeZhou/article/details/114288247">Pyramid Vision Transformer（PVT）: 纯Transformer设计，用于密集预测的通用backbone-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/weixin_73179708/article/details/132516512">从零开始了解transformer的机制|第四章：FFN层的作用-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/weixin_51756104/article/details/127250190">对Transformer中FeedForward层的理解_feedforward层的作用-CSDN博客</a></p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>论文学习</tag>
       </tags>
   </entry>
   <entry>
@@ -297,6 +204,113 @@ Output:$$C_i</script><h2 id="Extraction-with-Re-attention-Modul-ERA"><a href="#E
       </categories>
       <tags>
         <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PVT encoder</title>
+    <url>/2025/01/12/PVT-encoder/</url>
+    <content><![CDATA[<h1 id="PVT-encoder"><a href="#PVT-encoder" class="headerlink" title="PVT encoder"></a>PVT encoder</h1><p>use of transformer</p>
+<p>For example, some works model the vision task as a dictionary lookup problem with learnable queries, and use the Transformer decoder as a task-specific head on top of the CNN backbone.</p>
+<p>将视觉任务建模为一个具有可学习查询的字典查询问题，并将Transformer解码器作为CNN主干之上的特定任务头。</p>
+<span id="more"></span>
+<h2 id="ViT"><a href="#ViT" class="headerlink" title="ViT"></a>ViT</h2><p>拥有圆柱形的粗略images patches as input </p>
+<p>shortcomings：</p>
+<ol>
+<li>输出特征图是单尺度而且底分辨率</li>
+<li>计算花销大</li>
+</ol>
+<h2 id="PVT"><a href="#PVT" class="headerlink" title="PVT"></a>PVT</h2><p>a pure transformer backbone </p>
+<p>advantages:</p>
+<ol>
+<li>细粒度(fine-grained)的图像patches 来学习高分辨率表征</li>
+<li>引入一个逐渐减小的金字塔transformer的序列长度，减少计算量</li>
+<li>引入空间降低注意力层(spatial-reduce attention layer)降低在学习高分辨率特征图的开销</li>
+<li>产生全局感受野(global reception field)</li>
+</ol>
+<p><img src="D:\Program Files (x86" alt="image-20240812121219476">\Typora\img-data\image-20240812121219476.png)</p>
+<p>Feature Pyramid for Transformer</p>
+<p>首先将输入特征图分为<script type="math/tex">\frac{H_i W_i}{P_i^2}</script>个patches，将每个patches展平之后并且将其映射到(projected to)<script type="math/tex">C_i</script>维度的embedding，再经过一个线性映射之后，embedded patches可以被视为<script type="math/tex">\frac{H_i-1}{P_i}\times \frac{W_i-1}{P_i} \times C_i</script></p>
+<h2 id="SRA-？"><a href="#SRA-？" class="headerlink" title="SRA ？"></a>SRA ？</h2><p><img src="D:\Program Files (x86" alt="image-20240812152215411">\Typora\img-data\image-20240812152215411.png)</p>
+<p>和MHA(multi-head attention)相似，receive Q K V,它在进行注意力机制之前减少了K和V的空间尺度，显著降低了计算和存贮</p>
+<p><img src="D:\Program Files (x86" alt="image-20240814091739353">\Typora\img-data\image-20240814091739353.png)</p>
+<p>这里和原始transformer一样，只不过K和V先经过了一个空间降低操作。</p>
+<p><img src="D:\Program Files (x86" alt="image-20240814091832785">\Typora\img-data\image-20240814091832785.png)</p>
+<p><img src="D:\Program Files (x86" alt="image-20240814091918147">\Typora\img-data\image-20240814091918147.png)</p>
+<p>hyper parameters:</p>
+<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.192ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 969 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></g><g data-mml-node="mi" transform="translate(675,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: patch size of Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
+<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.357ex" height="1.952ex" role="img" focusable="false" viewBox="0 -705 1042 862.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g><g data-mml-node="mi" transform="translate(748,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: channel number of the output of Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
+<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.28ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 1008 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mi" transform="translate(714,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: encoder layers number in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
+<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.457ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 1086 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path></g><g data-mml-node="mi" transform="translate(792,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: reduction ratio of the SRA in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
+<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.556ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 1130 840.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g><g data-mml-node="mi" transform="translate(836,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: head number of the SRA in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
+<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.409ex" height="1.895ex" role="img" focusable="false" viewBox="0 -680 1065 837.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path></g><g data-mml-node="mi" transform="translate(771,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>: expansion ratio of the feed-forward layer in Stage <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="0.781ex" height="1.52ex" role="img" focusable="false" viewBox="0 -661 345 672"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></p>
+<p><strong>the rule of ResNet:</strong></p>
+<ol>
+<li><strong>use small output channel numbers in shallow stages</strong></li>
+<li><strong>concentrate the major computation resource in intermediate stages.</strong></li>
+<li><strong>with the growth of network depth, the hidden dimension gradually increases, and the output resolution progressively shrinks</strong></li>
+<li><strong>the major computation resource is concentrated in Stage 3</strong></li>
+</ol>
+<p>the advantages over ViT:</p>
+<ol>
+<li>more flexible—can generate feature maps of different scales/channels in different stages</li>
+<li>more versatile(通用)—can be easily plugged and played in most downstream task models</li>
+<li>more friendly to computation/memory—can handle higher resolution feature maps or longer sequences</li>
+</ol>
+<p>Reference:</p>
+<p><a href="https://blog.csdn.net/qq_38890412/article/details/120601834">全网最通俗易懂的 Self-Attention自注意力机制 讲解_self attention机制-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/weixin_42392454/article/details/122478544">狗都能看懂的Self-Attention讲解-CSDN博客</a></p>
+<p><a href="https://www.bilibili.com/video/BV15v411W78M/?spm_id_from=333.788">https://www.bilibili.com/video/BV15v411W78M/?spm_id_from=333.788</a></p>
+<p><a href="https://blog.csdn.net/oYeZhou/article/details/114288247">Pyramid Vision Transformer（PVT）: 纯Transformer设计，用于密集预测的通用backbone-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/weixin_73179708/article/details/132516512">从零开始了解transformer的机制|第四章：FFN层的作用-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/weixin_51756104/article/details/127250190">对Transformer中FeedForward层的理解_feedforward层的作用-CSDN博客</a></p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Temperature scaling</title>
+    <url>/2025/01/12/Temperature-scaling/</url>
+    <content><![CDATA[<p>Temperature scaling</p>
+<p>后验概率被应用在训练过程之后目的是学习一个重新校准的函数。为了达到这个目的，训练集的一部分被拿出作为校准集。重新校准函数适用于网络的输出（如logit向量），并产生一个改进的校准，该校准是在遗漏的校准集上学习的。<br><span id="more"></span><br>Temperature scaling是data-efficiency的accuracy-preserving方法，但是具有稍微不太好的expressive</p>
+<p>Selective Scaling：</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image002-1736691287914-3.png)</p>
+<p>原始：</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image004-1736691287914-4.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image006-1736691287914-2.png)</p>
+<p>只有卷积：<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image007.png)</p>
+<p>只有池化：</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image009.png)</p>
+<p>只有池化：</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image011.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image013.png)</p>
+<p>1.5</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image015.png)</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image017-1736691287913-1.png)</p>
+<p>1.6：</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image019-1736691287914-5.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image021.png)</p>
+<p>2.0：</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image023.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image025.png)</p>
+<p>1.8+ece做loss</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image027.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image029.png)</p>
+<p>1.8+ece做loss+池化</p>
+<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image031-1736691287914-6.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image033.png)</p>
+<p>Reference：</p>
+<p><a href="https://blog.csdn.net/m0_51233386/article/details/128414228">Ubuntu下tar命令使用详解 .tar解压、.tar压缩_ubuntu解压tar.gz-CSDN博客</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/630739668">Logistic（逻辑斯蒂）函数浅谈 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/335765830">简介欧拉第一类积分：Beta函数 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/63184325">神经网络1：多层感知器-MLP - 知乎 (zhihu.com)</a></p>
+<p><a href="https://blog.csdn.net/lingzhou33/article/details/87901365">语义分割的评价指标——IoU_语义分割iou-CSDN博客</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/33841176">CNN 入门讲解：什么是全连接层（Fully Connected Layer）? - 知乎 (zhihu.com)</a></p>
+<p><a href="https://blog.csdn.net/qq_37369201/article/details/109195257">python中assert的用法（简洁明了）_assert python-CSDN博客</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/666048268">Expected Calibration Error (ECE) - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>校准</tag>
       </tags>
   </entry>
   <entry>
@@ -429,92 +443,78 @@ Output:$$C_i</script><h2 id="Extraction-with-Re-attention-Modul-ERA"><a href="#E
       </tags>
   </entry>
   <entry>
-    <title>GPS</title>
-    <url>/2025/01/12/GPS/</url>
-    <content><![CDATA[<hr>
-<p><a href="https://www.semanticscholar.org/paper/Greedy-Policy-Search%3A-A-Simple-Baseline-for-Molchanov-Lyzhov/8286fbad6d4712d950689930720134bc8828963f?sort=relevance&amp;queryString=segmentation"> Greedy Policy Search: A Simple Baseline for Learnable Test-Time Augmentation | Semantic Scholar</a></p>
-<p><a href="https://github.com/SamsungLabs/gps-augment?tab=readme-ov-file">SamsungLabs/gps-augment: Simple but high-performing method for learning a policy of test-time augmentation (github.com)</a></p>
-<span id="more"></span>
-<p>在一个已经训练好的网络上将测试数据增广，利用这些数据来测量网络的不确定性</p>
-<p>GPS（greedy policy search）：a simple algorithm that learns a policy for test-time data augmentation based on the predictive performance on a validation set. </p>
-<p>一个简单的算法，<strong>根据验证集的预测性能</strong>来学习测试时间数据增强的策略。</p>
-<p>In an ablation study, we show that <strong>optimizing the calibrated log-likelihood**</strong>（优化校准的对数似然）<strong> (Ashukha et al., 2020) is </strong>a crucial part<strong> of the policy search algorithm, while the default objectives—</strong>accuracy and loglikelihood—lead to a significant drop in the final performance.**</p>
-<p>定义TTA policy为一系列子政策的集合，每个子政策又包含Ns个连续的图片变换。</p>
-<p>步骤：</p>
-<p>1、 先用CIFAR10数据集训练VGG模型，并用randaugment增广数据</p>
-<p>2、 将这些增广好的数据进行预测处理并选取其中的一部分作为备选池。本文共选取1101个子政策</p>
-<p>3、 用校准的对数似然来评价，选择让可以在聚合预测时提供最大提升的子政策进入pool中</p>
-<p><strong>Prediction通过求不同子政策的平均得到</strong></p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image002-1736691190942-1.jpg)</p>
-<p>GPS的核心算法（利用贪心和校准的对数似然）</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image004-1736691190944-2.png)</p>
-<p>评判标准：校准的对数似然（对数似然加上temperature scaling）</p>
-<p>GPS是一个学习型（learnable）的策略，它在过程中不断选择好的东西放到pool中</p>
-<p>域内的表现不错，但是还可以加上聚合来加强表现。</p>
-<p>原本的指标（metric）是accuracy和log-likelihood。但是LL可能会误把好模型忽略（因为刚好无法校准）但可以用温度缩放来调整回来。cLL可以得到更好的M</p>
-<p>领域转移的健壮性：CIFAR10-C, CIFAR-100-C and ImageNet-C datasets with 15 corruptions C from groups noise, blur, weather and digital.（数据）对每个确定的level都计算错误率，对每个corruption都计算平均</p>
-<p>一般来看，在干净的验证数据上训练的策略对损坏的数据有很好的效果。（换句话说，在哪里GPS效果都很好） transfer GPS policy 效果在不同的数据集上不错</p>
-<p>结合聚合方法效果也不错</p>
-<p>在原始的数据增广上也有不错的表现</p>
-<p>未加valid 5000</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image006-1736691190944-3.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image008-1736691190944-4.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image010-1736691190944-5.png)</p>
-<p>校准之后的数据</p>
-<p>加了valid5000</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image012.jpg)</p>
-<p>训练randaugment</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image014-1736691190944-6.png)</p>
-<p>第一次增广预测</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image016-1736691190944-8.png)</p>
-<p>第二次增广预测</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image018.png)</p>
-<p>第三次增广预测</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image020-1736691190944-7.png)</p>
-<p>第四次增广预测</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image022.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image024-1736691190945-9.png)</p>
-<p>GPS过程</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image026-1736691190945-10.png)评价过程</p>
-<p>Reference：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/620688513">Pytorch格式 .pt .pth .bin .onnx 详解 - 知乎 (zhihu.com)</a></p>
-<p><a href="https://blog.csdn.net/m0_51004308/article/details/118001835">Pytorch学习笔记(七):F.softmax()和F.log_softmax函数详解-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/qiankendeNMY/article/details/126508781?spm=1018.2226.3001.9630.1&amp;extra[title]=Python—argparse模块&amp;extra[utm_source]=vip_chatgpt_common_pc_toolbar&amp;extra[utm_medium]=">Python—argparse模块_parser.add_argument(‘—data’, type=str, default=’’-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/tsinghuahui/article/details/89279152">python argparse中action的可选参数store_true的作用_argparse store_true-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/u010804417/article/details/92843528">伪代码书写规则_伪代码怎么写-CSDN博客</a>（在伪码中，符号∅通常表示空集或空值）</p>
-<p><a href="https://zhuanlan.zhihu.com/p/26614750">一文搞懂极大似然估计 - 知乎 (zhihu.com)</a></p>
-<p><a href="https://blog.csdn.net/Elenstone/article/details/105677886">机器学习最易懂之贝叶斯模型详解与python实现_pytorch实现贝叶斯决策模型-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/qq_23933415/article/details/111212898">模型的参数verbose用法详解_verbose参数-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/weixin_44912159/article/details/104921422">论文中的常见缩写(w.r.t/i.e./et al等)的意思-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/fengbingchun/article/details/124648766">深度学习中的优化算法之带Momentum的SGD_momentum sgd-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/wangxuecheng666/article/details/109246126">StratifiedShuffleSplit（）函数的详细理解-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/qq_37297763/article/details/116847455">Pytorch学习（十三）python中<em>args和*</em>kwargs的用法_pytorch args.-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/Just_do_myself/article/details/123751148?spm=1018.2226.3001.9630.1&amp;extra[title]=深度学习之动态调整学习率LR&amp;extra[utm_source]=vip_chatgpt_common_pc_toolbar&amp;extra[utm_medium]=">深度学习之动态调整学习率LR_动态学习率-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/qq_42079689/article/details/102873766">PyTorch的nn.Linear（）详解_nn.linear()-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/weixin_42843425/article/details/122518502">model.parameters()的理解与使用-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/qq_41813454/article/details/135129279?spm=1018.2226.3001.9630.1&amp;extra[title]=别再混淆了！model.eval(">别再混淆了！model.eval()和torch.no_grad()的区别一次讲清楚-CSDN博客</a>和torch.no_grad()的区别一次讲清楚&amp;extra[utm_source]=vip_chatgpt_common_pc_toolbar&amp;extra[utm_medium]=)</p>
-<p><a href="https://zhuanlan.zhihu.com/p/38121870">机器学习之K折交叉验证 - 知乎 (zhihu.com)</a></p>
-<p><a href="https://blog.csdn.net/qq_39478403/article/details/121107057">【机器学习】浅谈 归纳偏置 (Inductive Bias)-CSDN博客</a></p>
-<p>· store_true 是指带触发 action 时为真，不触发则为假， 即默认 False ，传参 则 设置为 True<br> · store_false 则与之相反</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image028-1736691190945-11.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image030-1736691190945-12.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image032-1736691190945-13.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image034-1736691190945-14.png)<img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image036-1736691190945-16.png)</p>
-<p>enumerate函数，它可以同时返回列表中的元素和它们的索引</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image038-1736691190945-15.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image040-1736691190945-18.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image042.png)</p>
-<p><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image044.png)</p>
-<p>ablation study (消融实验）</p>
-<p><a href="https://zhuanlan.zhihu.com/p/644502891">一文搞懂什么是ablation study (消融实验） - 知乎 (zhihu.com)</a><br> adversarial attacks 对抗攻击 在某些微小影响下会导致巨大偏差</p>
-<p><a href="https://zhuanlan.zhihu.com/p/104532285">CV||对抗攻击领域综述（adversarial attack） - 知乎 (zhihu.com)</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/293065153">Google开箱即用数据增强RandAugment | NeurIPS 2020 - 知乎 (zhihu.com)</a></p>
-<p>原始的自动数据增强方式，先在一个单独的小数据集代理任务（可以理解成小/子数据集，子任务 ）上进行，然后再迁移到更大数据的目标任务中去。作者提出了一种实用的自动数据增强算法RandAugment。该方法无需在子任务上进行搜索验证。但为了减少数据增强的参数搜索空间，作者设计了一种简单的格点搜索（simple grid search）方法以学习/获取一种数据增强的策略。<strong>RandAugment只有两个参数：N和M。 其中N为在每次增强时使用N次操作（使用的这N个操作，都是从操作集中等概率抽取的，例如操作集中有14种操作，则每种操作被选中的概率为1/14，每张图像的N次增强中，选到的操作可能是一样的），M为正整数，表示所有操作在应用时，幅度都为M（旋转多少）</strong>。</p>
-<p><strong>用于数据增广</strong><img src="D:\Program Files (x86" alt="img">\Typora\img-data\clip_image046-1736691190945-17.png)</p>
+    <title>U-Net</title>
+    <url>/2025/01/12/U-Net/</url>
+    <content><![CDATA[<h1 id="U-Net"><a href="#U-Net" class="headerlink" title="U-Net"></a>U-Net</h1><p>​<br>The architecture consists of a contracting path to capture context and a symmetric expanding path that enables precise localization.</p>
+<p>该架构由一个捕捉上下文的收缩路径和一个实现精确定位的对称扩展路径组成</p>
+ <span id="more"></span>
+<p><strong>Hence, Ciresan et al.trained a network in a sliding-window setup to predict the class label of each pixel by providing a local region (patch) around that pixel as input.</strong></p>
+<p><strong>This network can localize.</strong></p>
+<p><strong>Two drawbacks: slow and redundant ,trade-off between localization accuracy and the use of context.</strong></p>
+<p>The main idea in fully convolutional network is to supplement a usual contracting network by successive layers, where pooling operators are replaced by upsampling operators.</p>
+<p>全卷积网络的主要思想是通过<strong>连续的层来补充通常的收缩网络，其中池化算子被上采样算子所取代。</strong></p>
+<p>FCN的主要工作是将传统CNN后面的全连接层换成了卷积层，这样网络的输出将是热力图而非类别；同时，为解决卷积和池化导致图像尺寸的变小，使用上采样方式对图像尺寸进行恢复，并且提出一个跳级结构，让pool4和pool3之后的特征图于conv7之后的特征图相加，得到新的更加准确的分割图像。</p>
+<p>这些layers增加了输出的分辨率。为了定位，通过收缩路径(conracting path)的高分辨率特征图和上采样的输出相结合，之后的连续卷积层可以来通过这些信息来学习更加精准的输出。</p>
+<p><strong>对于上采样保留了很多的特征通道，这个网络没有全连接层，只有卷积层。</strong></p>
+<p>只包含卷积就保证了seamless segmentation of arbitrarily large images by an overlap-tile strategy。通过重叠瓦片技术对任意大图形进行无缝分割。通过mirroring the input image.</p>
+<p>To predict the pixels in the border region of the image, the missing context is extrapolated by mirroring the input image. This tiling strategy is important to apply the network to large images, since otherwise the resolution would be limited by the GPU memory.</p>
+<p><strong>针对于数据增广，文章使用了弹性变换的方式，使得网络能够学习对这种变形的不变性，而不需要在注释的图像语料库中看到这些转换。</strong></p>
+<p>对同类型的细胞的分离是很打的一个挑战。文章使用了weighted loss，针对不同地区进行不同的loss学习，让网络对边缘(border)进行学习，达到分离的效果。</p>
+<p>网络结构：</p>
+<p>左边：contracting path(收缩路径) 右边：expansive path(扩展路径)</p>
+<p>Contracting path :重复使用2个没有padding的3<em>3卷积，每个卷积之后包含ReLU和一个2</em>2最大池化（stride=2），同时，在每次下采样的过程中将通道数*2.</p>
+<p>Expansive path : 2<em>2卷积进行上采样同时将通道数/2， 与收缩路径中相应裁剪的特征图相连接，两个3</em>3卷积每个都跟着一个ReLU。Cropping是重要的因为在卷积操作中会造成边缘像素的丢失。</p>
+<p>最后一层有一个1*1的卷积将64个特征向量映射到每个所期待的类别。</p>
+<p>总共有23层。</p>
+<p>为了允许输出分割图的无缝平铺（见图2），重要的是选择输入平铺的大小，使所有2x2的最大池化操作都应用于一个具有偶数x和y大小的层。（换句话说，contracting path中经过卷积和ReLU之后的图像的x，y都是偶数）</p>
+<p>训练：</p>
+<p>To minimize the overhead and make maximum use of the GPU memory, we favor large input tiles over a large batch size and hence reduce the batch to a single image.</p>
+<p>为了最大限度地减少开销和最大限度地利用GPU内存，我们倾向于使用大的输入瓦片而不是大的批处理量，从而将批处理量减少到单一图像。（换句话说就是图像大，batch size小）</p>
+<p>Accordingly we use a high momentum (0.99) such that a large number of the previously seen training samples determine the update in the current optimization step.</p>
+<p>因此，我们使用一个高动量（0.99），这样大量的先前看到的训练样本决定了当前优化步骤中的更新。</p>
+<p>能量函数(energy function)一开始在热力学中被定义，用于描述系统的能量值，当能量值达到最小时系统达到稳定状态。（换句话说就是优化函数）</p>
+<p>energy function： pixel-wise soft-max + Cross entropy</p>
+<p>Weighted map：</p>
+<p>需要有一个好的初始化a good initialization of the weights is extremely important</p>
+<p>Ideally the initial weights should be adapted such that each feature map in the network has approximately unit variance. 理想情况下，初始权重应该被调整，使网络中的每个特征图具有近似的单位方差。</p>
+<p>可以通过一个标准差为  的高斯分布得到。</p>
+<p>Data augmentation</p>
+<p>random elastic deformations is key concept..</p>
+<p>We generate smooth deformations using random displacement vectors on a coarse 3 by 3 grid. The displacements are sampled from a Gaussian distribution with 10 pixels standard deviation. Per-pixel displacements are then computed using bicubic interpolation. Drop-out layers at the end of the contracting path perform further implicit data augmentation</p>
+<p>我们在一个粗略的3乘3的网格上使用随机位移矢量生成平滑的变形。位移是从标准偏差为10像素的高斯分布中采样的。然后使用双三次插值计算每像素的位移。在收缩路径末端的剔除层进行进一步的隐性数据增强</p>
+<p>Reference:</p>
+<p><a href="https://blog.csdn.net/qq_36717487/article/details/115368483">语义分割与实例分割的区别_实例分割和语义分割-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/lsb2002/article/details/132005658">机器学习：监督学习、无监督学习、半监督学习、强化学习-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qq_41731861/article/details/120511148">FCN（全卷积神经网络）详解-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/maliang_1993/article/details/82020596">仿射和弹性变换（affine and elastic transform）的python实现_图像增强弹性变换-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/u011622208/article/details/112566676">【数据增强】——弹性变形(Elastic Distortion)_数据增强随机弹性变换-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/weixin_36474809/article/details/87931260">Unet论文详解U-Net:Convolutional Networks for Biomedical Image Segmentation-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/gaoxueyi551/article/details/105238182">深度学习中的Momentum算法原理-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qq_43374104/article/details/106434440">梯度下降优化算法Momentum_momentum梯度下降法-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/hejunqing14/article/details/50057001">能量函数在神经网络中的意义_energy function-CSDN博客</a></p>
 ]]></content>
       <categories>
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>校准</tag>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>u-kan</title>
+    <url>/2025/01/12/u-kan/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/jarodyv/article/details/138751803">深入理解 Kolmogorov–Arnold Networks (KAN)_kan: kolmogorov–arnold networks-CSDN博客</a></p>
+<p><a href="https://www.zhihu.com/question/654782350">(5 封私信 / 14 条消息) 如何评价神经网络架构KAN，是否有潜力取代MLP？ - 知乎 (zhihu.com)</a></p>
+<p><a href="https://blog.csdn.net/fg13821267836/article/details/93405572">多层感知机（MLP）简介-CSDN博客</a></p>
+<p>MLP说白了就是最简单的<script type="math/tex">f(w_i×x+b_i)+softmax</script>.</p>
+<p><a href="https://blog.csdn.net/qq_46703208/article/details/130539464">深度学习中的token_深度学习token-CSDN博客</a></p>
+<p>token:最小的单元。在nlp领域，就是一个单词。cv领域，在vit中就是16x16的patch</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>论文学习</tag>
       </tags>
   </entry>
 </search>

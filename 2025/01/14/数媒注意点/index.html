@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"defyodd.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":5},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="又是基本没用上系列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数媒注意点">
+<meta property="og:url" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/index.html">
+<meta property="og:site_name" content="This is defy_odd&#39;s blog">
+<meta property="og:description" content="又是基本没用上系列">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/1.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/2.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/3.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/4.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/5.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/6.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/7.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/8.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/9.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/10.png">
+<meta property="og:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/11.png">
+<meta property="article:published_time" content="2025-01-14T13:49:43.000Z">
+<meta property="article:modified_time" content="2025-01-14T14:03:55.903Z">
+<meta property="article:author" content="defy_odd">
+<meta property="article:tag" content="学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/1.png">
+
+<link rel="canonical" href="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数媒注意点 | This is defy_odd's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">This is defy_odd's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人在有闲的时候，才最像一个人 —— 梁实秋</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/defyodd" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://defyodd.github.io/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="defy_odd">
+      <meta itemprop="description" content="宝剑锋从磨砺出，梅花香自苦寒来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is defy_odd's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数媒注意点
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-01-14 21:49:43 / 修改时间：22:03:55" itemprop="dateCreated datePublished" datetime="2025-01-14T21:49:43+08:00">2025-01-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>27k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>24 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>又是基本没用上系列<br><span id="more"></span></p>
+<h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><h4 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h4><img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/1.png" class="" title="img">
+<script type="math/tex; mode=display">要计算一张100x100的彩色图像（假设是24位彩色，即每个像素用3个字节表示）的文件大小，可以按照以下步骤进行：</script><ol>
+<li><script type="math/tex; mode=display">计算像素总数：100像素 × 100像素 = 10,000像素。</script></li>
+<li><script type="math/tex; mode=display">计算每个像素的字节数：24位彩色图像，每个像素用3个字节表示。</script></li>
+<li><script type="math/tex; mode=display">计算总字节数：10,000像素 × 3字节/像素 = 30,000字节。</script></li>
+<li><script type="math/tex; mode=display">将字节转换为KB：30,000字节 ÷ 1,024字节/KB ≈ 29.29KB。</script></li>
+</ol>
+<script type="math/tex; mode=display">因此，一张100x100的24位彩色图像，不经过压缩，文件大小大约是30KB。</script><script type="math/tex; mode=display">选项B（30KB）是正确的。</script><h4 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、<img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/2.png" class="" title="img"></h4><h4 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、<img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/3.png" class="" title="img"></h4><h4 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、<img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/4.png" class="" title="img"></h4><p>长6个cell高4个cell，bin=5，一个cell出5个数，一个block出4 × 5=20个数，一共有（6-1） × （4-1）=5 × 3=15个block，所以一共15 × 20=300</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><h4 id="1、饱和度对比度亮度，重点是对比度"><a href="#1、饱和度对比度亮度，重点是对比度" class="headerlink" title="1、饱和度对比度亮度，重点是对比度"></a>1、饱和度对比度亮度，重点是对比度</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对比度调整 先算出图片均值，计算每个像素喝均值的差，乘以对比度因子，再加上均值和亮度值</span></span><br><span class="line">mean = np.mean(saturation_img)</span><br><span class="line">alpha = <span class="variable language_">self</span>.contrast_slider.value() / <span class="number">100.0</span></span><br><span class="line">beta = <span class="variable language_">self</span>.brightness_slider.value()</span><br><span class="line">contrast_img = (saturation_img - mean) * alpha + mean + beta</span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保像素值在 [0, 255] 范围内</span></span><br><span class="line">contrast_img = np.clip(contrast_img, <span class="number">0</span>, <span class="number">255</span>).astype(np.uint8)</span><br><span class="line"></span><br><span class="line">brightness_img = cv2.convertScaleAbs(contrast_img, alpha=<span class="number">1</span>, beta=<span class="variable language_">self</span>.brightness_slider.value())</span><br></pre></td></tr></table></figure>
+<p>完整代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QApplication, QMainWindow, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QFileDialog, QSlider, QWidget,QMessageBox</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtGui <span class="keyword">import</span> QImage, QPixmap</span><br><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtWidgets</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainWindow</span>(<span class="title class_ inherited__">QMainWindow</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.setWindowTitle(<span class="string">&quot;Saturation and Contrast Adjustment&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取屏幕尺寸</span></span><br><span class="line">        screen = QApplication.primaryScreen()</span><br><span class="line">        screen_geometry = screen.geometry()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取窗口尺寸</span></span><br><span class="line">        window_width, window_height = <span class="number">800</span>, <span class="number">600</span></span><br><span class="line">        window_geometry = <span class="variable language_">self</span>.frameGeometry()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算窗口在屏幕中的中心位置</span></span><br><span class="line">        center_point = screen_geometry.center()</span><br><span class="line">        window_geometry.moveCenter(center_point)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 设置窗口的位置</span></span><br><span class="line">        <span class="variable language_">self</span>.setGeometry(window_geometry.x(), window_geometry.y(), window_width, window_height)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.init_ui()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">init_ui</span>(<span class="params">self</span>):</span><br><span class="line">        central_widget = QWidget(<span class="variable language_">self</span>)</span><br><span class="line">        layout = QVBoxLayout(central_widget)    </span><br><span class="line">        <span class="comment"># central Widget 里面的主layout</span></span><br><span class="line">        <span class="comment">#mainLayout = QtWidgets.QVBoxLayout(central_widget)</span></span><br><span class="line">        <span class="comment">#界面的上半部分 : 滑动条展示部分</span></span><br><span class="line">        topLayout = QtWidgets.QVBoxLayout()      </span><br><span class="line">        <span class="comment"># 饱和度滑动条及其提示标签</span></span><br><span class="line">        saturation_layout = QVBoxLayout()</span><br><span class="line">        <span class="variable language_">self</span>.saturation_slider = QSlider(Qt.Horizontal, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.saturation_slider.setMinimum(<span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.saturation_slider.setMaximum(<span class="number">200</span>)</span><br><span class="line">        <span class="variable language_">self</span>.saturation_slider.setValue(<span class="number">100</span>)</span><br><span class="line">        <span class="variable language_">self</span>.saturation_slider.valueChanged[<span class="built_in">int</span>].connect(<span class="variable language_">self</span>.update_saturation)</span><br><span class="line">        <span class="variable language_">self</span>.saturation_label = QLabel(<span class="string">&quot;Saturation: 100%&quot;</span>, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.saturation_label.setAlignment(Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.saturation_slider.hide()</span><br><span class="line">        <span class="variable language_">self</span>.saturation_label.hide()</span><br><span class="line">        saturation_layout.addWidget(<span class="variable language_">self</span>.saturation_slider)</span><br><span class="line">        saturation_layout.addWidget(<span class="variable language_">self</span>.saturation_label)</span><br><span class="line">        topLayout.addLayout(saturation_layout)    </span><br><span class="line">        <span class="comment"># 对比度滑动条及其提示标签</span></span><br><span class="line">        contrast_layout = QVBoxLayout()</span><br><span class="line">        <span class="variable language_">self</span>.contrast_slider = QSlider(Qt.Horizontal, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.contrast_slider.setMinimum(<span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.contrast_slider.setMaximum(<span class="number">200</span>)</span><br><span class="line">        <span class="variable language_">self</span>.contrast_slider.setValue(<span class="number">100</span>)</span><br><span class="line">        <span class="variable language_">self</span>.contrast_slider.valueChanged[<span class="built_in">int</span>].connect(<span class="variable language_">self</span>.update_contrast)</span><br><span class="line">        <span class="variable language_">self</span>.contrast_label = QLabel(<span class="string">&quot;Contrast: 100%&quot;</span>, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.contrast_label.setAlignment(Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.contrast_slider.hide()</span><br><span class="line">        <span class="variable language_">self</span>.contrast_label.hide()</span><br><span class="line">        contrast_layout.addWidget(<span class="variable language_">self</span>.contrast_slider)</span><br><span class="line">        contrast_layout.addWidget(<span class="variable language_">self</span>.contrast_label)</span><br><span class="line">        topLayout.addLayout(contrast_layout)   </span><br><span class="line">        <span class="comment"># 亮度滑动条及其提示标签x</span></span><br><span class="line">        brightness_layout = QVBoxLayout()</span><br><span class="line">        <span class="variable language_">self</span>.brightness_slider = QSlider(Qt.Horizontal, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.brightness_slider.setMinimum(-<span class="number">100</span>)</span><br><span class="line">        <span class="variable language_">self</span>.brightness_slider.setMaximum(<span class="number">100</span>)</span><br><span class="line">        <span class="variable language_">self</span>.brightness_slider.setValue(<span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.brightness_slider.valueChanged[<span class="built_in">int</span>].connect(<span class="variable language_">self</span>.update_brightness)</span><br><span class="line">        <span class="variable language_">self</span>.brightness_label = QLabel(<span class="string">&quot;Brightness: 0%&quot;</span>, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.brightness_label.setAlignment(Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.brightness_slider.hide()</span><br><span class="line">        <span class="variable language_">self</span>.brightness_label.hide()</span><br><span class="line">        brightness_layout.addWidget(<span class="variable language_">self</span>.brightness_slider)</span><br><span class="line">        brightness_layout.addWidget(<span class="variable language_">self</span>.brightness_label)</span><br><span class="line">        topLayout.addLayout(brightness_layout)</span><br><span class="line">        layout.addLayout(topLayout)       </span><br><span class="line">        <span class="comment">#下半部分</span></span><br><span class="line">        lowLayout = QtWidgets.QHBoxLayout()</span><br><span class="line">        <span class="comment">#原图</span></span><br><span class="line">        original_layout = QVBoxLayout()</span><br><span class="line">        <span class="comment"># 文件选择按钮   </span></span><br><span class="line">        <span class="variable language_">self</span>.text = QLabel(<span class="string">&quot;饱和度、对比度、亮度调整&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.text.setAlignment(Qt.AlignCenter)</span><br><span class="line">        original_layout.addWidget(<span class="variable language_">self</span>.text)  </span><br><span class="line">        <span class="variable language_">self</span>.button = QPushButton(<span class="string">&#x27;请选择图片文件&#x27;</span>, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button.setFixedSize(<span class="number">250</span>,<span class="number">30</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button.clicked.connect(<span class="variable language_">self</span>.load_image)</span><br><span class="line">        original_layout.addWidget(<span class="variable language_">self</span>.button,alignment=Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.text_ori = QLabel(<span class="string">&quot;原图&quot;</span>,<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.text_ori.setAlignment(Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.text_ori.hide()</span><br><span class="line">        original_layout.addWidget(<span class="variable language_">self</span>.text_ori)</span><br><span class="line">        <span class="comment">#图片在中间显示</span></span><br><span class="line">        <span class="variable language_">self</span>.ori_image_label = QLabel(<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.ori_image_label.setAlignment(Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.ori_image_label.hide()</span><br><span class="line">        original_layout.addWidget(<span class="variable language_">self</span>.ori_image_label)        </span><br><span class="line">        lowLayout.addLayout(original_layout)</span><br><span class="line">        <span class="comment">#变换之后</span></span><br><span class="line">        changed_layout = QVBoxLayout()</span><br><span class="line">        <span class="comment">#图片下载按钮</span></span><br><span class="line">        <span class="variable language_">self</span>.button_download = QPushButton(<span class="string">&#x27;保存变换之后的图片&#x27;</span>, <span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button_download.setFixedSize(<span class="number">250</span>,<span class="number">30</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button_download.clicked.connect(<span class="variable language_">self</span>.download_image)</span><br><span class="line">        <span class="variable language_">self</span>.button_download.hide()</span><br><span class="line">        changed_layout.addWidget(<span class="variable language_">self</span>.button_download,alignment=Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.text_chan = QLabel(<span class="string">&quot;变换图&quot;</span>,<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.text_chan.setAlignment(Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.text_chan.hide()</span><br><span class="line">        changed_layout.addWidget(<span class="variable language_">self</span>.text_chan)</span><br><span class="line">        <span class="comment"># 图像标签</span></span><br><span class="line">        <span class="variable language_">self</span>.changed_image_label = QLabel(<span class="variable language_">self</span>)</span><br><span class="line">        <span class="variable language_">self</span>.changed_image_label.setAlignment(Qt.AlignCenter)</span><br><span class="line">        <span class="variable language_">self</span>.changed_image_label.hide()</span><br><span class="line">        changed_layout.addWidget(<span class="variable language_">self</span>.changed_image_label)</span><br><span class="line">        lowLayout.addLayout(changed_layout)</span><br><span class="line">        layout.addLayout(lowLayout)  </span><br><span class="line">        <span class="variable language_">self</span>.setCentralWidget(central_widget)</span><br><span class="line">        <span class="variable language_">self</span>.image = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>.changed_image=<span class="literal">None</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">load_image</span>(<span class="params">self</span>):</span><br><span class="line">        options = QFileDialog.Options()</span><br><span class="line">        <span class="comment">#如果已经打开一张图片，想要打开第二张图片先将第一张图片清空</span></span><br><span class="line">        <span class="comment"># if self.image is not None:</span></span><br><span class="line">        <span class="comment">#     self.image = None</span></span><br><span class="line">        <span class="comment">#     self.update_image()</span></span><br><span class="line">        file_name, _ = QFileDialog.getOpenFileName(<span class="variable language_">self</span>, <span class="string">&quot;Open Image&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;Image Files (*.png *.jpg *.bmp)&quot;</span>, options=options)</span><br><span class="line">        <span class="keyword">if</span> file_name:            </span><br><span class="line">            <span class="variable language_">self</span>.image = cv2.imread(file_name)</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.image <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                QMessageBox.warning(<span class="variable language_">self</span>, <span class="string">&quot;Warning&quot;</span>, <span class="string">&quot;图片打开失败，文件名或路径包含中文，不可识别，请将文件放置在英文路径下&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="variable language_">self</span>.image = cv2.resize(<span class="variable language_">self</span>.image, (<span class="number">400</span>,<span class="number">400</span>))</span><br><span class="line">            <span class="variable language_">self</span>.saturation_slider.setValue(<span class="number">100</span>)</span><br><span class="line">            <span class="variable language_">self</span>.contrast_slider.setValue(<span class="number">100</span>)</span><br><span class="line">            <span class="variable language_">self</span>.brightness_slider.setValue(<span class="number">0</span>)</span><br><span class="line">            <span class="variable language_">self</span>.update_image()</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">self</span>.text.hide()</span><br><span class="line">            <span class="variable language_">self</span>.saturation_label.show()</span><br><span class="line">            <span class="variable language_">self</span>.saturation_slider.show()</span><br><span class="line">            <span class="variable language_">self</span>.contrast_label.show()</span><br><span class="line">            <span class="variable language_">self</span>.contrast_slider.show()</span><br><span class="line">            <span class="variable language_">self</span>.brightness_label.show()</span><br><span class="line">            <span class="variable language_">self</span>.brightness_slider.show()</span><br><span class="line">            <span class="variable language_">self</span>.text_ori.show()</span><br><span class="line">            <span class="variable language_">self</span>.ori_image_label.show()</span><br><span class="line">            <span class="variable language_">self</span>.text_chan.show()</span><br><span class="line">            <span class="variable language_">self</span>.button_download.show()</span><br><span class="line">            <span class="variable language_">self</span>.changed_image_label.show()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment">#提示图片上传失败</span></span><br><span class="line">            QMessageBox.warning(<span class="variable language_">self</span>, <span class="string">&quot;Warning&quot;</span>, <span class="string">&quot;图片上传失败&quot;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update_image</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.image <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            hsv_img = cv2.cvtColor(<span class="variable language_">self</span>.image, cv2.COLOR_BGR2HSV)</span><br><span class="line">            hsv_img[..., <span class="number">1</span>] = hsv_img[..., <span class="number">1</span>] * (<span class="variable language_">self</span>.saturation_slider.value() / <span class="number">100.0</span>)</span><br><span class="line">            saturation_img = cv2.cvtColor(hsv_img, cv2.COLOR_HSV2BGR)</span><br><span class="line">            <span class="comment">#contrast_img = cv2.convertScaleAbs(saturation_img, alpha=self.contrast_slider.value() / 100.0, beta=0)</span></span><br><span class="line">            <span class="comment"># 对比度调整 先算出图片均值，计算每个像素喝均值的差，乘以对比度因子，再加上均值和亮度值</span></span><br><span class="line">            mean = np.mean(saturation_img)</span><br><span class="line">            alpha = <span class="variable language_">self</span>.contrast_slider.value() / <span class="number">100.0</span></span><br><span class="line">            beta = <span class="variable language_">self</span>.brightness_slider.value()</span><br><span class="line">            contrast_img = (saturation_img - mean) * alpha + mean + beta</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 确保像素值在 [0, 255] 范围内</span></span><br><span class="line">            contrast_img = np.clip(contrast_img, <span class="number">0</span>, <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">            </span><br><span class="line">            brightness_img = cv2.convertScaleAbs(contrast_img, alpha=<span class="number">1</span>, beta=<span class="variable language_">self</span>.brightness_slider.value())</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">self</span>.changed_image = brightness_img</span><br><span class="line">            <span class="comment"># images_1 = np.hstack([self.image, saturation_img])</span></span><br><span class="line">            <span class="comment"># images_2 = np.hstack([contrast_img, brightness_img])</span></span><br><span class="line">            <span class="comment"># result_image = np.vstack([images_1, images_2])</span></span><br><span class="line">            <span class="comment">#result_image = np.hstack([self.image,brightness_img])</span></span><br><span class="line">            <span class="comment">#变换后图 </span></span><br><span class="line">            height, width, channel = brightness_img.shape</span><br><span class="line">            bytes_per_line = <span class="number">3</span> * width</span><br><span class="line">            q_image = QImage(brightness_img.data, width, height, bytes_per_line, QImage.Format_BGR888)</span><br><span class="line">            pixmap = QPixmap.fromImage(q_image)</span><br><span class="line">            <span class="variable language_">self</span>.changed_image_label.setPixmap(pixmap)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">#原图</span></span><br><span class="line">            height, width, channel = <span class="variable language_">self</span>.image.shape</span><br><span class="line">            bytes_per_line = <span class="number">3</span> * width</span><br><span class="line">            q_image = QImage(<span class="variable language_">self</span>.image.data, width, height, bytes_per_line, QImage.Format_BGR888)</span><br><span class="line">            pixmap = QPixmap.fromImage(q_image)</span><br><span class="line">            <span class="variable language_">self</span>.ori_image_label.setPixmap(pixmap)   </span><br><span class="line">            <span class="comment">#cv2.imshow(&quot;image&quot;,self.image)</span></span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            QMessageBox.warning(<span class="variable language_">self</span>, <span class="string">&quot;Warning&quot;</span>, <span class="string">&quot;请先上传图片&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update_saturation</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="variable language_">self</span>.saturation_label.setText(<span class="string">f&quot;Saturation: <span class="subst">&#123;value&#125;</span>%&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.update_image()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update_contrast</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="variable language_">self</span>.contrast_label.setText(<span class="string">f&quot;Contrast: <span class="subst">&#123;value&#125;</span>%&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.update_image()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update_brightness</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="variable language_">self</span>.brightness_label.setText(<span class="string">f&quot;Brightness: <span class="subst">&#123;value&#125;</span>%&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.update_image()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">download_image</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.image <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            options = QFileDialog.Options()</span><br><span class="line">            file_name, _ = QFileDialog.getSaveFileName(<span class="variable language_">self</span>, <span class="string">&quot;Save Image&quot;</span>, <span class="string">&quot;changed.jpg&quot;</span>, <span class="string">&quot;Image Files (*.png *.jpg *.bmp)&quot;</span>, options=options)</span><br><span class="line">            <span class="keyword">if</span> file_name:</span><br><span class="line">                cv2.imwrite(file_name, <span class="variable language_">self</span>.changed_image)</span><br><span class="line">                QMessageBox.information(<span class="variable language_">self</span>, <span class="string">&quot;Success&quot;</span>, <span class="string">&quot;图片保存成功&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    main_window = MainWindow()</span><br><span class="line">    main_window.show()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<h4 id="2、hog特征"><a href="#2、hog特征" class="headerlink" title="2、hog特征"></a>2、hog特征</h4><h5 id="2、1手动实现"><a href="#2、1手动实现" class="headerlink" title="2、1手动实现"></a>2、1手动实现</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, exposure</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HOG</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,img,cell_size=<span class="number">16</span>,bin_size=<span class="number">8</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.img = img</span><br><span class="line">        <span class="variable language_">self</span>.img = cv2.resize(<span class="variable language_">self</span>.img,(<span class="number">224</span>,<span class="number">224</span>))</span><br><span class="line">        <span class="comment"># gamma 矫正</span></span><br><span class="line">        <span class="variable language_">self</span>.img = np.power(<span class="variable language_">self</span>.img/<span class="built_in">float</span>(np.<span class="built_in">max</span>(<span class="variable language_">self</span>.img)),<span class="number">1.5</span>) </span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.cell_size = cell_size</span><br><span class="line">        <span class="variable language_">self</span>.bin_size = bin_size</span><br><span class="line">        <span class="variable language_">self</span>.angle_range = <span class="number">360</span>/<span class="variable language_">self</span>.bin_size</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">grad_and_theta</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment">#dx</span></span><br><span class="line">        kernel_x = np.array([[-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>]])</span><br><span class="line">        <span class="comment">#dx = cv2.filter2D(self.img, -1, kernel_x)</span></span><br><span class="line">        dx = signal.convolve2d(<span class="variable language_">self</span>.img,kernel_x,boundary=<span class="string">&#x27;symm&#x27;</span>,mode=<span class="string">&#x27;same&#x27;</span>)</span><br><span class="line">        <span class="comment">#dy</span></span><br><span class="line">        kernel_y = np.array([[-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>]]).T</span><br><span class="line">        <span class="comment">#dy = cv2.filter2D(self.img, -1, kernel_y)</span></span><br><span class="line">        dy = signal.convolve2d(<span class="variable language_">self</span>.img,kernel_y,boundary=<span class="string">&#x27;symm&#x27;</span>,mode=<span class="string">&#x27;same&#x27;</span>)</span><br><span class="line">        <span class="comment">#grad</span></span><br><span class="line">        grad  = np.sqrt(dx**<span class="number">2</span>+dy**<span class="number">2</span>)</span><br><span class="line">        <span class="comment">#angle</span></span><br><span class="line">        theta = np.degrees(np.arctan2(dx,dy))</span><br><span class="line">        <span class="comment">#处理theta小于0</span></span><br><span class="line">        theta[theta&lt;<span class="number">0</span>] = np.pi+theta[theta&lt;<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> grad,theta</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">cell_hist</span>(<span class="params">self,grad,theta</span>):</span><br><span class="line">        <span class="comment">#初始化</span></span><br><span class="line">        cell_hist = <span class="variable language_">self</span>.bin_size*[<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(grad.shape[<span class="number">0</span>]):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(grad.shape[<span class="number">1</span>]):</span><br><span class="line">                index = <span class="built_in">int</span>(theta[i][j]/<span class="variable language_">self</span>.angle_range)</span><br><span class="line">                rest = theta[i][j]%<span class="variable language_">self</span>.angle_range</span><br><span class="line">                <span class="keyword">if</span> rest==<span class="number">0</span>:</span><br><span class="line">                    cell_hist[index] += grad[i][j]</span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    <span class="comment">#计算一个比例</span></span><br><span class="line">                    cell_hist[index] += grad[i][j]*(<span class="number">1</span>-rest/<span class="variable language_">self</span>.angle_range)</span><br><span class="line">                    cell_hist[(index+<span class="number">1</span>)%<span class="variable language_">self</span>.bin_size] += grad[i][j]*(rest/<span class="variable language_">self</span>.angle_range)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> cell_hist   </span><br><span class="line">     </span><br><span class="line">    <span class="comment">#整张图片的特征</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">block_hist</span>(<span class="params">self,grad,theta</span>):</span><br><span class="line">        height,width = <span class="variable language_">self</span>.img.shape</span><br><span class="line">        cell_grad_vec = np.zeros((<span class="built_in">int</span>(height/<span class="variable language_">self</span>.cell_size),<span class="built_in">int</span>(width/<span class="variable language_">self</span>.cell_size),<span class="variable language_">self</span>.bin_size))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(cell_grad_vec.shape[<span class="number">0</span>]):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(cell_grad_vec.shape[<span class="number">1</span>]):</span><br><span class="line">                cell_grad_t = grad[i*<span class="variable language_">self</span>.cell_size:(i+<span class="number">1</span>)*<span class="variable language_">self</span>.cell_size,j*<span class="variable language_">self</span>.cell_size:(j+<span class="number">1</span>)*<span class="variable language_">self</span>.cell_size]</span><br><span class="line">                cell_theta_t = theta[i*<span class="variable language_">self</span>.cell_size:(i+<span class="number">1</span>)*<span class="variable language_">self</span>.cell_size,j*<span class="variable language_">self</span>.cell_size:(j+<span class="number">1</span>)*<span class="variable language_">self</span>.cell_size]</span><br><span class="line">                cell_grad_vec[i][j] = <span class="variable language_">self</span>.cell_hist(cell_grad_t,cell_theta_t)</span><br><span class="line">        </span><br><span class="line">        hog_image = <span class="variable language_">self</span>.render_gradient(np.zeros(<span class="variable language_">self</span>.img.shape),cell_grad_vec)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> hog_image</span><br><span class="line">        </span><br><span class="line">    <span class="comment">#画图</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">render_gradient</span>(<span class="params">self, image, cell_gradient</span>):</span><br><span class="line">        cell_width = <span class="variable language_">self</span>.cell_size / <span class="number">2</span></span><br><span class="line">        max_mag = np.array(cell_gradient).<span class="built_in">max</span>()</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(cell_gradient.shape[<span class="number">0</span>]):</span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(cell_gradient.shape[<span class="number">1</span>]):</span><br><span class="line">                cell_grad = cell_gradient[x][y]</span><br><span class="line">                </span><br><span class="line">                <span class="comment"># 归一化</span></span><br><span class="line">                cell_grad /= max_mag</span><br><span class="line">                angle = <span class="number">0</span></span><br><span class="line">                angle_gap = <span class="variable language_">self</span>.angle_range</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">for</span> magnitude <span class="keyword">in</span> cell_grad:</span><br><span class="line">                    angle_radian = math.radians(angle)</span><br><span class="line">                    x1 = <span class="built_in">int</span>(x * <span class="variable language_">self</span>.cell_size + magnitude * cell_width * math.cos(angle_radian))</span><br><span class="line">                    y1 = <span class="built_in">int</span>(y * <span class="variable language_">self</span>.cell_size + magnitude * cell_width * math.sin(angle_radian))</span><br><span class="line">                    x2 = <span class="built_in">int</span>(x * <span class="variable language_">self</span>.cell_size - magnitude * cell_width * math.cos(angle_radian))</span><br><span class="line">                    y2 = <span class="built_in">int</span>(y * <span class="variable language_">self</span>.cell_size - magnitude * cell_width * math.sin(angle_radian))</span><br><span class="line">                    </span><br><span class="line">                    cv2.line(image, (y1, x1), (y2, x2), <span class="built_in">int</span>(<span class="number">255</span> * math.sqrt(magnitude)))</span><br><span class="line">                    </span><br><span class="line">                    angle += angle_gap</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> image</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    img = cv2.imread(<span class="string">&quot;pic/sky1.jpg&quot;</span>,<span class="number">0</span>)</span><br><span class="line">    hog = HOG(img,<span class="number">16</span>,<span class="number">8</span>)</span><br><span class="line">    grad, theta = hog.grad_and_theta()</span><br><span class="line">    <span class="built_in">print</span>(grad.shape[<span class="number">0</span>],theta.shape)</span><br><span class="line">    image = hog.block_hist(grad, theta)</span><br><span class="line">    </span><br><span class="line">    fig, (ax1, ax2) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">10</span>, <span class="number">6</span>), sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>)</span><br><span class="line">    ax1.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">    ax1.imshow(img, cmap=plt.cm.gray)</span><br><span class="line">    ax1.set_title(<span class="string">&#x27;Input image&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Rescale histogram for better display</span></span><br><span class="line">    hog_image_rescaled = exposure.rescale_intensity(image, in_range=(<span class="number">0</span>, <span class="number">10</span>))</span><br><span class="line">    ax2.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">    ax2.imshow(hog_image_rescaled, cmap=plt.cm.gray)</span><br><span class="line">    ax2.set_title(<span class="string">&#x27;Histogram of Oriented Gradients&#x27;</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="2、2库函数"><a href="#2、2库函数" class="headerlink" title="2、2库函数"></a>2、2库函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> skimage.feature <span class="keyword">import</span> hog</span><br><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, exposure</span><br><span class="line"></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;pic/sky1.jpg&#x27;</span>, <span class="number">0</span>)        <span class="comment"># 读取图片，有0的话表示转变为灰度图；</span></span><br><span class="line">image = cv2.resize(image, (<span class="number">224</span>, <span class="number">224</span>))</span><br><span class="line">image = np.float32(image) / <span class="number">255.0</span>       <span class="comment"># 归一化</span></span><br><span class="line"><span class="comment"># cv2.imshow(&quot;normalization&quot;,image)</span></span><br><span class="line"><span class="comment"># cv2.waitKey()</span></span><br><span class="line"></span><br><span class="line">fd, hog_image = hog(image,</span><br><span class="line">                    orientations=<span class="number">8</span>,</span><br><span class="line">                    pixels_per_cell=(<span class="number">16</span>, <span class="number">16</span>),</span><br><span class="line">                    cells_per_block=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">                    visualize=<span class="literal">True</span>,</span><br><span class="line">                    ) <span class="comment"># multichannel=True是针对3通道彩色；</span></span><br><span class="line"></span><br><span class="line">fig, (ax1, ax2) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">10</span>, <span class="number">6</span>), sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>)</span><br><span class="line">ax1.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">ax1.imshow(image, cmap=plt.cm.gray)</span><br><span class="line">ax1.set_title(<span class="string">&#x27;Input image&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rescale histogram for better display</span></span><br><span class="line">hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(<span class="number">0</span>, <span class="number">10</span>))</span><br><span class="line">ax2.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">ax2.imshow(hog_image_rescaled, cmap=plt.cm.gray)</span><br><span class="line">ax2.set_title(<span class="string">&#x27;Histogram of Oriented Gradients&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h5 id="2、3-hog-SVM"><a href="#2、3-hog-SVM" class="headerlink" title="2、3 hog+SVM"></a>2、3 hog+SVM</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> skimage.feature <span class="keyword">import</span> hog</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> gzip <span class="comment">#解压</span></span><br><span class="line"><span class="keyword">import</span> certifi</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_mnist_images</span>(<span class="params">filename</span>):</span><br><span class="line">    <span class="keyword">with</span> gzip.<span class="built_in">open</span>(filename,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = np.frombuffer(f.read(),np.uint8,offset=<span class="number">16</span>)</span><br><span class="line">    <span class="keyword">return</span> data.reshape(-<span class="number">1</span>,<span class="number">28</span>,<span class="number">28</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_mnist_labels</span>(<span class="params">filename</span>):</span><br><span class="line">    <span class="keyword">with</span> gzip.<span class="built_in">open</span>(filename,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = np.frombuffer(f.read(),np.uint8,offset=<span class="number">8</span>)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">HOG</span>(<span class="params">images</span>):</span><br><span class="line">    hog = cv2.HOGDescriptor((<span class="number">28</span>,<span class="number">28</span>),(<span class="number">4</span>,<span class="number">4</span>),(<span class="number">4</span>,<span class="number">4</span>),(<span class="number">4</span>,<span class="number">4</span>),<span class="number">9</span>) <span class="comment">#winSize, blockSize, blockStride, cellSize, nbins, derivAperture=1, winSigma=-1, histogramNormType=0, L2HysThreshold=0.2, gammaCorrection=1, nlevels=64, signedGradient=False</span></span><br><span class="line">    <span class="comment">#gray_images = cv2.cvtColor(images,cv2.COLOR_BGR2GRAY)</span></span><br><span class="line">    hog_image=[]</span><br><span class="line">    <span class="keyword">for</span> image <span class="keyword">in</span> images:</span><br><span class="line">        feature = hog.compute(image)</span><br><span class="line">        hog_image.append(feature.flatten())</span><br><span class="line">    <span class="keyword">return</span> np.array(hog_image)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">svm_model</span>():</span><br><span class="line">    </span><br><span class="line">    model = cv2.ml.SVM_create()</span><br><span class="line">    model.setGamma(<span class="number">0.1</span>)<span class="comment">#核函数宽度</span></span><br><span class="line">    model.setC(<span class="number">10</span>)<span class="comment">#误差项的惩罚系数</span></span><br><span class="line">    model.setKernel(cv2.ml.SVM_RBF)<span class="comment">#将数据映射到高维</span></span><br><span class="line">    model.setType(cv2.ml.SVM_C_SVC)</span><br><span class="line">    <span class="keyword">return</span> model</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取 MNIST 数据集</span></span><br><span class="line">x_train = load_mnist_images(<span class="string">&#x27;train-images-idx3-ubyte.gz&#x27;</span>)</span><br><span class="line">y_train = load_mnist_labels(<span class="string">&#x27;train-labels-idx1-ubyte.gz&#x27;</span>)</span><br><span class="line">x_test = load_mnist_images(<span class="string">&#x27;t10k-images-idx3-ubyte.gz&#x27;</span>)</span><br><span class="line">y_test = load_mnist_labels(<span class="string">&#x27;t10k-labels-idx1-ubyte.gz&#x27;</span>)</span><br><span class="line"></span><br><span class="line">x_train_hog = HOG(x_train)</span><br><span class="line">x_test_hog = HOG(x_test)</span><br><span class="line"></span><br><span class="line">x_train_hog = x_train_hog.astype(<span class="string">&#x27;float32&#x27;</span>)</span><br><span class="line">x_test_hog = x_test_hog.astype(<span class="string">&#x27;float32&#x27;</span>)</span><br><span class="line">y_train = y_train.astype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line">y_test = y_test.astype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;data ready&quot;</span>)</span><br><span class="line"></span><br><span class="line">SVM = svm_model()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;SVM created&quot;</span>)</span><br><span class="line">SVM.train(x_train_hog,cv2.ml.ROW_SAMPLE,y_train)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;SVM trained&quot;</span>)</span><br><span class="line"></span><br><span class="line">SVM.save(<span class="string">&#x27;svm_model.xml&#x27;</span>)</span><br><span class="line"></span><br><span class="line">_,y_pred = SVM.predict(x_test_hog)</span><br><span class="line">y_pred = y_pred.flatten().astype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;prediction done&quot;</span>)</span><br><span class="line"></span><br><span class="line">acc = np.<span class="built_in">sum</span>(y_pred==y_test)/<span class="built_in">len</span>(y_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Accuracy: &quot;</span>,acc)</span><br><span class="line"></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(4,4) gamma=0.1 C=120  0.989</span></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(4,4) gamma=0.1 C=100  0.989</span></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(4,4) gamma=0.1 C=1  0.9884</span></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(4,4) gamma=0.03 C=100 0.9875</span></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(4,4) gamma=0.01 C=100 0.9845</span></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(2,2) gamma=0.1 C=1 0.9821</span></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(4,4) gamma=0.0 C=100 SVM_LINEAR 0.9667 </span></span><br><span class="line"><span class="comment">#blockSize, blockStride, cellSize =(7,7) gamma=0.03 C=100 0.9697</span></span><br></pre></td></tr></table></figure>
+<h4 id="3、直方图相似性匹配"><a href="#3、直方图相似性匹配" class="headerlink" title="3、直方图相似性匹配"></a>3、直方图相似性匹配</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># def cos(image1,image2):</span></span><br><span class="line"><span class="comment">#     images = [image1,image2]</span></span><br><span class="line"><span class="comment">#     vectors=[]</span></span><br><span class="line"><span class="comment">#     norms=[]</span></span><br><span class="line"><span class="comment">#     for image in images:</span></span><br><span class="line"><span class="comment">#         vector = []</span></span><br><span class="line"><span class="comment">#         for pix in image:</span></span><br><span class="line"><span class="comment">#             vector.append(np.average(pix))</span></span><br><span class="line">            </span><br><span class="line"><span class="comment">#             vector.append(vector)</span></span><br><span class="line">            </span><br><span class="line"><span class="comment">#         vectors.append(vector)    </span></span><br><span class="line">        </span><br><span class="line"><span class="comment">#         norms.append(np.linalg.norm(vector))</span></span><br><span class="line"><span class="comment">#     img1_vec,img2_vec = vectors    </span></span><br><span class="line"><span class="comment">#     image1_norm,image2_norm=norms</span></span><br><span class="line"><span class="comment">#     return np.dot(img1_vec/image1_norm,img2_vec/image2_norm)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cal_hist</span>(<span class="params">channel</span>):</span><br><span class="line">    </span><br><span class="line">    hist =[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>)]</span><br><span class="line">    </span><br><span class="line">    w,d=channel.shape</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(w):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(d):</span><br><span class="line">            hist[channel[i][j]]+=<span class="number">1</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> hist</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">image_hist</span>(<span class="params">image</span>):</span><br><span class="line">    image = cv2.resize(image,(<span class="number">256</span>,<span class="number">256</span>))</span><br><span class="line">    hists=[]</span><br><span class="line">    b_channel,g_channel,r_channel = cv2.split(image)</span><br><span class="line">    b_hist = cal_hist(b_channel)</span><br><span class="line">    g_hist = cal_hist(g_channel)</span><br><span class="line">    r_hist = cal_hist(r_channel)</span><br><span class="line">    hists.append(b_hist)</span><br><span class="line">    hists.append(g_hist)</span><br><span class="line">    hists.append(r_hist)</span><br><span class="line">    <span class="keyword">return</span> hists</span><br><span class="line"></span><br><span class="line"><span class="comment">#用的是归一化之后的欧氏距离进行直方图相似度计算</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cal_simility</span>(<span class="params">hist1,hist2</span>):</span><br><span class="line">    degrees=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        degree = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> hist1[i][j]==hist2[i][j]:</span><br><span class="line">                degree+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                degree+= (<span class="number">1</span>-(<span class="built_in">abs</span>(hist1[i][j]-hist2[i][j])/<span class="built_in">max</span>(hist1[i][j],hist2[i][j])))</span><br><span class="line">        degrees += degree /<span class="number">256</span></span><br><span class="line">    </span><br><span class="line">    degrees/=<span class="number">3</span></span><br><span class="line">    <span class="keyword">return</span> degrees          </span><br><span class="line"></span><br><span class="line">image1 = cv2.imread(<span class="string">&quot;pic/sky3.jpg&quot;</span>)</span><br><span class="line">image1_hist = image_hist(image1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取pic文件夹中图片文件</span></span><br><span class="line">path = <span class="string">&quot;pic&quot;</span></span><br><span class="line">images = []</span><br><span class="line">degrees = []</span><br><span class="line">image_paths = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> image_name <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">    pic_path = os.path.join(path, image_name)</span><br><span class="line">    image = cv2.imread(pic_path)</span><br><span class="line">    image = cv2.resize(image,(<span class="number">256</span>,<span class="number">256</span>))</span><br><span class="line">    image_hist_ = image_hist(image)</span><br><span class="line">    degree = cal_simility(image1_hist, image_hist_)</span><br><span class="line">    images.append(image)</span><br><span class="line">    degrees.append(degree)</span><br><span class="line">    image_paths.append(pic_path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对图片和相似度进行排序</span></span><br><span class="line">sorted_indices = np.argsort(degrees)[::-<span class="number">1</span>]  <span class="comment"># 从高到低排序</span></span><br><span class="line">sorted_images = [images[i] <span class="keyword">for</span> i <span class="keyword">in</span> sorted_indices]</span><br><span class="line">sorted_degrees = [degrees[i] <span class="keyword">for</span> i <span class="keyword">in</span> sorted_indices]</span><br><span class="line">sorted_image_paths = [image_paths[i] <span class="keyword">for</span> i <span class="keyword">in</span> sorted_indices]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将所有图片显示出来，并标明相似度</span></span><br><span class="line">plt.figure(figsize=(<span class="number">15</span>, <span class="number">10</span>))</span><br><span class="line">num_images = <span class="built_in">len</span>(sorted_images)</span><br><span class="line">rows = <span class="built_in">int</span>(np.ceil(num_images / <span class="number">3</span>))  <span class="comment"># 每行显示3张图片</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_images):</span><br><span class="line">    plt.subplot(rows, <span class="number">3</span>, i + <span class="number">1</span>)</span><br><span class="line">    plt.imshow(cv2.cvtColor(sorted_images[i], cv2.COLOR_BGR2RGB))</span><br><span class="line">    plt.title(<span class="string">f&quot;<span class="subst">&#123;os.path.basename(sorted_image_paths[i])&#125;</span>\nSimilarity: <span class="subst">&#123;sorted_degrees[i]:<span class="number">.2</span>f&#125;</span>&quot;</span>)</span><br><span class="line">    plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h3><h4 id="三层全连接推导"><a href="#三层全连接推导" class="headerlink" title="三层全连接推导"></a>三层全连接推导</h4>
+<h4 id="代码实现：GTP4o-version"><a href="#代码实现：GTP4o-version" class="headerlink" title="代码实现：GTP4o version"></a>代码实现：GTP4o version</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化参数</span></span><br><span class="line">w1, w2, w3, w4 = <span class="number">0.15</span>, <span class="number">0.20</span>, <span class="number">0.25</span>, <span class="number">0.30</span></span><br><span class="line">w5, w6, w7, w8 = <span class="number">0.40</span>, <span class="number">0.45</span>, <span class="number">0.50</span>, <span class="number">0.55</span></span><br><span class="line">b1, b2 = <span class="number">0.35</span>, <span class="number">0.60</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入和目标输出</span></span><br><span class="line">x = np.array([<span class="number">0.05</span>, <span class="number">0.10</span>])</span><br><span class="line">y_true = np.array([<span class="number">0.01</span>, <span class="number">0.99</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">z</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-z))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">z</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(z) * (<span class="number">1</span> - sigmoid(z))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 前向传播</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">forward_propagation</span>(<span class="params">x, w, b</span>):</span><br><span class="line">    <span class="comment"># 隐藏层</span></span><br><span class="line">    z1 = x[<span class="number">0</span>] * w[<span class="number">0</span>] + x[<span class="number">1</span>] * w[<span class="number">1</span>] + b[<span class="number">0</span>]</span><br><span class="line">    z2 = x[<span class="number">0</span>] * w[<span class="number">2</span>] + x[<span class="number">1</span>] * w[<span class="number">3</span>] + b[<span class="number">0</span>]</span><br><span class="line">    h1 = sigmoid(z1)</span><br><span class="line">    h2 = sigmoid(z2)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 输出层</span></span><br><span class="line">    z3 = h1 * w[<span class="number">4</span>] + h2 * w[<span class="number">5</span>] + b[<span class="number">1</span>]</span><br><span class="line">    z4 = h1 * w[<span class="number">6</span>] + h2 * w[<span class="number">7</span>] + b[<span class="number">1</span>]</span><br><span class="line">    o1 = sigmoid(z3)</span><br><span class="line">    o2 = sigmoid(z4)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> np.array([h1, h2]), np.array([o1, o2]), np.array([z1, z2, z3, z4])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反向传播</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">backpropagation</span>(<span class="params">x, y_true, hidden_output, output, intermediate_z, w, b, lr</span>):</span><br><span class="line">    <span class="comment"># 输出层误差</span></span><br><span class="line">    delta_o1 = (output[<span class="number">0</span>] - y_true[<span class="number">0</span>]) * sigmoid_derivative(intermediate_z[<span class="number">2</span>])</span><br><span class="line">    delta_o2 = (output[<span class="number">1</span>] - y_true[<span class="number">1</span>]) * sigmoid_derivative(intermediate_z[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 隐藏层误差</span></span><br><span class="line">    delta_h1 = (delta_o1 * w[<span class="number">4</span>] + delta_o2 * w[<span class="number">6</span>]) * sigmoid_derivative(intermediate_z[<span class="number">0</span>])</span><br><span class="line">    delta_h2 = (delta_o1 * w[<span class="number">5</span>] + delta_o2 * w[<span class="number">7</span>]) * sigmoid_derivative(intermediate_z[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新权重</span></span><br><span class="line">    w[<span class="number">4</span>] -= lr * delta_o1 * hidden_output[<span class="number">0</span>]</span><br><span class="line">    w[<span class="number">5</span>] -= lr * delta_o1 * hidden_output[<span class="number">1</span>]</span><br><span class="line">    w[<span class="number">6</span>] -= lr * delta_o2 * hidden_output[<span class="number">0</span>]</span><br><span class="line">    w[<span class="number">7</span>] -= lr * delta_o2 * hidden_output[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    w[<span class="number">0</span>] -= lr * delta_h1 * x[<span class="number">0</span>]</span><br><span class="line">    w[<span class="number">1</span>] -= lr * delta_h1 * x[<span class="number">1</span>]</span><br><span class="line">    w[<span class="number">2</span>] -= lr * delta_h2 * x[<span class="number">0</span>]</span><br><span class="line">    w[<span class="number">3</span>] -= lr * delta_h2 * x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新偏置</span></span><br><span class="line">    b[<span class="number">1</span>] -= lr * (delta_o1 + delta_o2)</span><br><span class="line">    b[<span class="number">0</span>] -= lr * (delta_h1 + delta_h2)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> w, b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化权重和偏置</span></span><br><span class="line">w = np.array([w1, w2, w3, w4, w5, w6, w7, w8])</span><br><span class="line">b = np.array([b1, b2])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学习率</span></span><br><span class="line">lr = <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练循环</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">    hidden_output, output, intermediate_z = forward_propagation(x, w, b)</span><br><span class="line">    loss = <span class="number">0.5</span> * ((y_true[<span class="number">0</span>] - output[<span class="number">0</span>])**<span class="number">2</span> + (y_true[<span class="number">1</span>] - output[<span class="number">1</span>])**<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> epoch % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Epoch <span class="subst">&#123;epoch&#125;</span>, Loss: <span class="subst">&#123;loss:<span class="number">.6</span>f&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    w, b = backpropagation(x, y_true, hidden_output, output, intermediate_z, w, b, lr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最终结果</span></span><br><span class="line">hidden_output, output, _ = forward_propagation(x, w, b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;训练完成后:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;隐藏层输出: h1 = &#123;:.4f&#125;, h2 = &#123;:.4f&#125;&quot;</span>.<span class="built_in">format</span>(hidden_output[<span class="number">0</span>], hidden_output[<span class="number">1</span>]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;输出层输出: o1 = &#123;:.4f&#125;, o2 = &#123;:.4f&#125;&quot;</span>.<span class="built_in">format</span>(output[<span class="number">0</span>], output[<span class="number">1</span>]))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h3><p><strong>卷积计算公式：<script type="math/tex">(N + 2P - K) / S + 1</script></strong></p>
+<img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/5.png" class="" title="img">
+<script type="math/tex; mode=display">输出尺寸：（32+2 x 2-5）/1+1=32+4-5+1=32</script><script type="math/tex; mode=display">参数量：10个5x5卷积核，维度为3，10x5x5x3=750，还有10个偏置，共760个参数</script><img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/6.png" class="" title="img">
+<h3 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h3><script type="math/tex; mode=display">转置卷积公式：outputsize = (inputsize - 1) * stride + kernelsize - 2*padding</script><img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/7.png" class="" title="img">
+<script type="math/tex; mode=display">(7-1)*2+3-2*1=13,卷积个数为8</script><img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/8.png" class="" title="img">
+<p>答案错了</p>
+<script type="math/tex; mode=display">(4-1)*2+4-2*1=8,答案是C</script><img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/9.png" class="" title="img">
+<h4 id="RCNN-Region-based-Convolutional-Neural-Networks"><a href="#RCNN-Region-based-Convolutional-Neural-Networks" class="headerlink" title="RCNN (Region-based Convolutional Neural Networks)"></a>RCNN (Region-based Convolutional Neural Networks)</h4><ol>
+<li><strong>选择候选区域</strong>：使用选择性搜索（Selective Search）算法生成大约 2000 个候选区域（Region Proposals）。</li>
+<li><strong>特征提取</strong>：将每个候选区域调整为固定大小，并使用卷积神经网络（CNN）提取特征。</li>
+<li><strong>分类和回归</strong>：使用支持向量机（SVM）对每个候选区域进行分类，并使用线性回归调整边界框。</li>
+</ol>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>计算量大，速度慢，因为每个候选区域都需要单独通过 CNN 进行特征提取。</li>
+<li>存储需求高，因为需要存储每个候选区域的特征。</li>
+</ul>
+<h4 id="Fast-RCNN"><a href="#Fast-RCNN" class="headerlink" title="Fast RCNN"></a>Fast RCNN</h4><ol>
+<li><strong>共享特征提取</strong>：整个图像通过 CNN 进行一次特征提取，生成特征图。</li>
+<li><strong>候选区域生成</strong>：在特征图上使用选择性搜索生成候选区域。</li>
+<li><strong>ROI Pooling</strong>：将候选区域映射到特征图上，并使用 ROI Pooling 层将不同大小的候选区域调整为相同大小。</li>
+<li><strong>分类和回归</strong>：使用全连接层对每个候选区域进行分类和边界框回归。</li>
+</ol>
+<p><strong>改进</strong>：</p>
+<ul>
+<li>通过共享特征提取，大大减少了计算量，提高了速度。</li>
+<li>使用 ROI Pooling 层，使得不同大小的候选区域可以在同一个特征图上进行处理。</li>
+</ul>
+<h4 id="Faster-RCNN"><a href="#Faster-RCNN" class="headerlink" title="Faster RCNN"></a>Faster RCNN</h4><ol>
+<li><strong>共享特征提取</strong>：整个图像通过 CNN 进行一次特征提取，生成特征图。</li>
+<li><strong>区域建议网络（RPN）</strong>：在特征图上使用 RPN 生成候选区域。RPN 是一个轻量级网络，可以直接在特征图上生成候选区域。</li>
+<li><strong>ROI Pooling</strong>：将 RPN 生成的候选区域映射到特征图上，并使用 ROI Pooling 层将不同大小的候选区域调整为相同大小。</li>
+<li><strong>分类和回归</strong>：使用全连接层对每个候选区域进行分类和边界框回归。</li>
+</ol>
+<p><strong>改进</strong>：</p>
+<ul>
+<li>引入 RPN 代替选择性搜索，进一步提高了候选区域生成的速度和质量。</li>
+<li>RPN 和 Fast RCNN 共享特征提取网络，使得整个网络可以端到端训练，提高了检测精度和速度。</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li><strong>RCNN</strong>：使用选择性搜索生成候选区域，每个候选区域单独通过 CNN 提取特征，速度慢。</li>
+<li><strong>Fast RCNN</strong>：共享特征提取，使用 ROI Pooling 层处理候选区域，提高了速度。</li>
+<li><strong>Faster RCNN</strong>：引入 RPN 生成候选区域，进一步提高了速度和精度，实现了端到端训练。</li>
+</ul>
+<h3 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h3><h4 id="CBIR："><a href="#CBIR：" class="headerlink" title="CBIR："></a>CBIR：</h4><p>大规模图像集的基于内容的图像检索（Content-Based Image Retrieval，简称 CBIR）是一种利用图像的视觉内容（如颜色、纹理、形状等）进行图像检索的方法。与基于文本的图像检索不同，CBIR 不依赖于图像的元数据（如标签、描述），而是直接分析图像的内容来进行检索。</p>
+<h4 id="CBIR-的基本原理"><a href="#CBIR-的基本原理" class="headerlink" title="CBIR 的基本原理"></a>CBIR 的基本原理</h4><ol>
+<li><strong>特征提取</strong>：从图像中提取视觉特征，如颜色直方图、纹理特征、形状特征等。这些特征通常以向量的形式表示。</li>
+<li><strong>特征索引</strong>：将提取的特征存储在数据库中，并建立索引，以便快速检索。</li>
+<li><strong>相似性度量</strong>：定义一种度量图像特征相似性的算法，如欧氏距离、余弦相似度等。</li>
+<li><strong>检索过程</strong><ul>
+<li>用户提供查询图像。</li>
+<li>从查询图像中提取特征。</li>
+<li>计算查询图像特征与数据库中图像特征之间的相似性。</li>
+<li>返回与查询图像最相似的图像。</li>
+</ul>
+</li>
+</ol>
+<h4 id="向量检索"><a href="#向量检索" class="headerlink" title="向量检索"></a>向量检索</h4><p>向量检索（Vector Retrieval）是一种基于向量空间模型的检索方法，用于在高维向量空间中查找与查询向量相似的向量。向量检索广泛应用于信息检索、推荐系统、图像检索、自然语言处理等领域。</p>
+<p>向量检索是一种基于向量空间模型的检索方法，通过将数据转换为向量表示，并使用相似性度量和高效的索引结构，快速查找与查询向量相似的向量。向量检索在信息检索、推荐系统、图像检索等领域有广泛的应用。</p>
+<h5 id="向量检索的基本原理"><a href="#向量检索的基本原理" class="headerlink" title="向量检索的基本原理"></a>向量检索的基本原理</h5><ol>
+<li><strong>特征表示</strong>：将数据（如文本、图像、音频等）转换为向量表示。例如，文本可以通过词嵌入（如 Word2Vec、GloVe、BERT）转换为向量，图像可以通过卷积神经网络（CNN）提取特征向量。</li>
+<li><strong>相似性度量</strong>：定义一种度量向量之间相似性的方法。常用的相似性度量包括欧氏距离、余弦相似度、曼哈顿距离等。</li>
+<li><strong>索引结构</strong>：构建高效的索引结构，以便快速检索相似向量。常用的索引结构包括 KD 树、球树（Ball Tree）、局部敏感哈希（LSH）、近似最近邻（ANN）等。</li>
+<li><strong>检索过程</strong><ul>
+<li>用户提供查询向量。</li>
+<li>计算查询向量与数据库中向量的相似性。</li>
+<li>返回与查询向量最相似的向量。</li>
+</ul>
+</li>
+</ol>
+<h5 id="向量检索的应用场景"><a href="#向量检索的应用场景" class="headerlink" title="向量检索的应用场景"></a>向量检索的应用场景</h5><ol>
+<li><strong>信息检索</strong>：在文档库中查找与查询文本相似的文档。</li>
+<li><strong>推荐系统</strong>：根据用户的历史行为向量，推荐相似的物品。</li>
+<li><strong>图像检索</strong>：在图像库中查找与查询图像相似的图像。</li>
+<li><strong>自然语言处理</strong>：在语料库中查找与查询句子相似的句子。</li>
+<li><strong>音频检索</strong>：在音频库中查找与查询音频相似的音频。</li>
+</ol>
+<h4 id="向量数据库"><a href="#向量数据库" class="headerlink" title="向量数据库"></a>向量数据库</h4><p>向量数据库（Vector Database）是一种专门用于存储、索引和检索高维向量数据的数据库系统。随着机器学习和深度学习的发展，向量数据库在处理和管理大规模向量数据方面变得越来越重要。向量数据库通常用于支持基于内容的检索、推荐系统、图像和文本搜索等应用。</p>
+<p>向量数据库是一种专门用于存储、索引和检索高维向量数据的数据库系统，广泛应用于图像检索、文本检索、推荐系统等领域。通过使用高效的索引结构和相似性搜索算法，向量数据库能够在大规模数据中快速查找与查询向量相似的向量。</p>
+<h5 id="向量数据库的特点"><a href="#向量数据库的特点" class="headerlink" title="向量数据库的特点"></a>向量数据库的特点</h5><ol>
+<li><strong>高维数据存储</strong>：能够高效地存储和管理高维向量数据。</li>
+<li><strong>相似性搜索</strong>：支持快速的相似性搜索，通常使用近似最近邻（Approximate Nearest Neighbor, ANN）算法。</li>
+<li><strong>高效索引</strong>：使用高效的索引结构（如 KD 树、球树、LSH 等）来加速向量检索。</li>
+<li><strong>扩展性</strong>：能够处理大规模数据，支持分布式存储和计算。</li>
+<li><strong>实时性</strong>：支持实时数据插入、更新和删除操作。</li>
+</ol>
+<h5 id="向量数据库的应用场景"><a href="#向量数据库的应用场景" class="headerlink" title="向量数据库的应用场景"></a>向量数据库的应用场景</h5><ol>
+<li><strong>图像检索</strong>：在大规模图像库中查找与查询图像相似的图像。</li>
+<li><strong>文本检索</strong>：在文档库中查找与查询文本相似的文档。</li>
+<li><strong>推荐系统</strong>：根据用户的历史行为向量，推荐相似的物品。</li>
+<li><strong>音频检索</strong>：在音频库中查找与查询音频相似的音频。</li>
+<li><strong>生物信息学</strong>：在基因序列库中查找相似的基因序列。</li>
+</ol>
+<h5 id="常见的向量数据库"><a href="#常见的向量数据库" class="headerlink" title="常见的向量数据库"></a>常见的向量数据库</h5><ol>
+<li><strong>Faiss</strong>：由 Facebook AI Research 开发的高效相似性搜索库，支持大规模向量数据的快速检索。</li>
+<li><strong>Annoy</strong>：由 Spotify 开发的近似最近邻搜索库，适用于内存中的大规模数据。</li>
+<li><strong>Milvus</strong>：一个开源的向量数据库，支持大规模向量数据的存储和检索，具有高扩展性和高性能。</li>
+<li><strong>Elasticsearch with k-NN plugin</strong>：Elasticsearch 是一个分布式搜索引擎，k-NN 插件支持向量相似性搜索。</li>
+</ol>
+<img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/10.png" class="" title="img">
+<h3 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h3><h4 id="权值：标量（浮点数），本意是体现相关性，或者说依赖关系，一般通过-两个向量点乘得到（但不是直接点乘（相似性），而是乘以一个转换矩阵-后，而且转换后的维度可能发生变化，Why？）"><a href="#权值：标量（浮点数），本意是体现相关性，或者说依赖关系，一般通过-两个向量点乘得到（但不是直接点乘（相似性），而是乘以一个转换矩阵-后，而且转换后的维度可能发生变化，Why？）" class="headerlink" title="权值：标量（浮点数），本意是体现相关性，或者说依赖关系，一般通过 两个向量点乘得到（但不是直接点乘（相似性），而是乘以一个转换矩阵 后，而且转换后的维度可能发生变化，Why？）"></a>权值：标量（浮点数），本意是体现相关性，或者说依赖关系，一般通过 两个向量点乘得到（但不是直接点乘（相似性），而是乘以一个转换矩阵 后，而且转换后的维度可能发生变化，Why？）</h4><p>这些转换矩阵的作用是将输入向量映射到不同的空间，以便更好地捕捉和表示相关性。</p>
+<ol>
+<li><strong>捕捉不同的特征</strong>：通过使用不同的权重矩阵 (W_Q)、(W_K) 和 (W_V)，可以将输入向量映射到不同的特征空间，从而捕捉输入序列中不同的特征和关系。这使得模型能够更好地理解和表示输入数据的复杂性。</li>
+<li><strong>提高模型的表达能力</strong>：线性变换可以增加模型的表达能力，使其能够学习到更复杂的模式和关系。不同的线性变换可以捕捉到输入数据的不同方面，从而提高模型的性能。</li>
+<li><p><strong>维度变化</strong>：通过线性变换，可以改变输入向量的维度，以适应不同层的需求。例如，在多头注意力机制中，每个头的维度通常较小，通过线性变换可以将输入向量分割成多个头，每个头独立计算注意力。</p>
+<script type="math/tex; mode=display">\text{Attention}(Q, K, V) = \text{Softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V</script></li>
+</ol>
+<h4 id="自注意力-●加权求和得到最终结果，但加-的是Value（同样需要转换矩-阵将输入转换成v），为什么-不能直接加输入-a-？"><a href="#自注意力-●加权求和得到最终结果，但加-的是Value（同样需要转换矩-阵将输入转换成v），为什么-不能直接加输入-a-？" class="headerlink" title="自注意力 ●加权求和得到最终结果，但加 的是Value（同样需要转换矩 阵将输入转换成v），为什么 不能直接加输入 a ？"></a>自注意力 ●加权求和得到最终结果，但加 的是Value（同样需要转换矩 阵将输入转换成v），为什么 不能直接加输入 a ？</h4><p>这是因为自注意力机制的设计目的是通过查询向量（Query）和键向量（Key）计算注意力权重，然后使用这些权重对值向量（Value）进行加权求和，从而生成新的表示。这种设计有几个重要的原因：</p>
+<h5 id="1-不同的特征空间"><a href="#1-不同的特征空间" class="headerlink" title="1. 不同的特征空间"></a>1. 不同的特征空间</h5><p>在自注意力机制中，输入向量 (X) 被分别映射到查询向量 (Q)、键向量 (K) 和值向量 (V) 的不同特征空间。这些特征空间的设计目的是为了捕捉输入数据的不同方面：</p>
+<ul>
+<li><strong>查询向量 (Q)</strong>：用于计算与其他输入向量的相似性。</li>
+<li><strong>键向量 (K)</strong>：用于计算与查询向量的相似性。</li>
+<li><strong>值向量 (V)</strong>：用于生成最终的输出表示。</li>
+</ul>
+<p>通过这种方式，模型可以更灵活地学习和表示输入数据的不同特征。如果直接使用输入向量 (X) 进行加权求和，模型将无法充分利用这些不同的特征空间。</p>
+<h5 id="2-提高模型的表达能力"><a href="#2-提高模型的表达能力" class="headerlink" title="2. 提高模型的表达能力"></a>2. 提高模型的表达能力</h5><p>通过将输入向量 (X) 映射到值向量 (V)，模型可以学习到更复杂的特征表示。值向量 (V) 可以包含输入向量 (X) 的不同方面的信息，从而提高模型的表达能力和性能。</p>
+<h5 id="3-保持一致性"><a href="#3-保持一致性" class="headerlink" title="3. 保持一致性"></a>3. 保持一致性</h5><p>在自注意力机制中，查询向量 (Q) 和键向量 (K) 用于计算注意力权重，而值向量 (V) 用于生成最终的输出表示。这种设计保持了一致性，使得注意力权重可以直接应用于值向量 (V)，从而生成新的表示。如果直接使用输入向量 (X)，将破坏这种一致性。</p>
+<img src="/2025/01/14/%E6%95%B0%E5%AA%92%E6%B3%A8%E6%84%8F%E7%82%B9/11.png" class="" title="img">
+<h3 id="综合分析"><a href="#综合分析" class="headerlink" title="综合分析"></a>综合分析</h3><h4 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h4><p>卷积神经网络（CNN）：</p>
+<p>使用CNN模型（如VGGFace、FaceNet）进行人脸特征提取。通过训练大量人脸图像，模型能够学习到不同人脸的独特特征。</p>
+<p>应用示例：在安全监控系统中，实时捕捉视频流中的人脸，并通过CNN进行特征提取和比对，识别出潜在的嫌疑人。</p>
+<p>人脸对齐：</p>
+<p>在进行人脸识别之前，使用深度学习算法（如Dlib库中的人脸对齐技术）对人脸进行标准化处理，以提高识别精度。</p>
+<p>应用示例：在社交媒体平台中，用户上传的照片经过对齐处理后，系统能够更准确地进行自动标记。</p>
+<p>生成对抗网络（GAN）：</p>
+<p>使用GAN生成高质量的人脸图像，增强训练数据集，提升模型的鲁棒性。</p>
+<p>应用示例：在面部表情识别中，通过生成多样化的表情图像，提升模型对不同情绪的识别能力。</p>
+<h4 id="拍物检索"><a href="#拍物检索" class="headerlink" title="拍物检索"></a>拍物检索</h4><p>深度学习图像分类：</p>
+<p>使用预训练的深度学习模型（如ResNet、Inception）进行物体识别。通过迁移学习，针对特定商品进行微调。</p>
+<p>应用示例：用户拍摄商品，应用程序通过深度学习模型识别商品类别，并提供相关信息和购买链接。</p>
+<p>特征匹配与检索：</p>
+<p>利用深度学习提取图像特征向量，构建特征数据库，通过相似度计算实现快速检索。</p>
+<p>应用示例：在博物馆中，游客拍摄展品，系统通过特征匹配快速提供展品的详细信息。</p>
+<ol>
+<li>图像分割：</li>
+</ol>
+<p>使用深度学习进行图像分割（如U-Net），提取物体的精确边界，提升识别的准确性。</p>
+<p>应用示例：在植物识别应用中，通过分割技术提取植物的特征，帮助用户更准确地识别植物种类。</p>
+<p>这些深度学习技术的结合，使得人脸识别和拍物检索的应用更加智能化和高效</p>
+<h4 id="1-人脸识别"><a href="#1-人脸识别" class="headerlink" title="1. 人脸识别"></a>1. 人脸识别</h4><p>应用场景：</p>
+<p>安全监控：</p>
+<p>在公共场所（如机场、车站）部署摄像头，实时监控人群，识别可疑人员。</p>
+<p>结合大数据分析，识别潜在的犯罪行为，提升公共安全。</p>
+<p>身份验证：</p>
+<p>在手机、电脑等设备上使用人脸识别进行解锁，替代传统密码。</p>
+<p>在金融支付场景中，使用人脸识别进行身份验证，提升安全性。</p>
+<p>技术实现：</p>
+<p>卷积神经网络（CNN）：</p>
+<p>模型选择：使用VGGFace、FaceNet或ArcFace等预训练模型，进行人脸特征提取。</p>
+<p>特征提取：通过CNN提取128维或256维的特征向量，形成每个人脸的独特表示。</p>
+<p>人脸对齐：</p>
+<p>技术：使用Dlib库中的人脸关键点检测，确保人脸在同一标准姿态下进行识别。</p>
+<p>步骤：检测人脸后，进行旋转和缩放，使得眼睛和嘴巴位置一致，减少姿态变化对识别的影响。</p>
+<p>生成对抗网络（GAN）：</p>
+<p>数据增强：使用GAN生成多样化的人脸图像，增加训练数据的多样性，提升模型的泛化能力。</p>
+<p>应用：在训练过程中，生成不同表情、光照条件下的人脸图像，提升模型的鲁棒性。</p>
+<p>性能优化：</p>
+<p>实时处理：</p>
+<p>硬件加速：使用GPU或TPU加速模型推理，确保在高帧率下处理视频流。</p>
+<p>模型压缩：采用模型剪枝、量化和知识蒸馏等技术，减少模型大小，提高推理速度。</p>
+<p>准确性提升：</p>
+<p>数据增强：通过旋转、翻转、亮度调整、噪声添加等方式增强训练数据，提升模型的鲁棒性。</p>
+<p>迁移学习：在特定领域（如安防）进行微调，提升模型在特定场景下的表现。</p>
+<p>系统架构：</p>
+<p>前端：摄像头采集视频流，进行人脸检测和识别。</p>
+<p>后端：服务器接收视频流，进行特征提取和比对，返回识别结果。</p>
+<p>数据库：存储人脸特征向量和用户信息，支持快速检索。</p>
+<h4 id="2-拍物检索"><a href="#2-拍物检索" class="headerlink" title="2. 拍物检索"></a>2. 拍物检索</h4><p>应用场景：</p>
+<p>购物应用：</p>
+<p>用户拍摄商品，系统识别并提供购买链接、价格比较和用户评价。</p>
+<p>结合AR技术，用户可以在现实环境中查看商品信息。</p>
+<p>博物馆导览：</p>
+<p>用户拍摄展品，系统提供详细信息、历史背景和相关视频。</p>
+<p>结合语音识别，用户可以通过语音询问展品信息。</p>
+<p>植物识别：</p>
+<p>用户拍摄植物，系统识别植物种类并提供养护建议、生态信息。</p>
+<p>技术实现：</p>
+<p>深度学习图像分类：</p>
+<p>模型选择：使用ResNet、Inception或EfficientNet进行物体识别。</p>
+<p>训练数据：收集大量商品或展品的图像，进行标注和分类，确保数据的多样性和代表性。</p>
+<p>特征匹配与检索：</p>
+<p>特征提取：使用深度学习模型提取图像特征向量，构建特征数据库。</p>
+<p>相似度计算：使用余弦相似度、欧氏距离或Hamming距离进行特征匹配，快速检索相似物体。</p>
+<p>图像分割：</p>
+<p>技术：使用U-Net或Mask R-CNN进行物体边界提取，确保物体特征的准确性。</p>
+<p>应用：在植物识别中，通过分割提取植物的特征，帮助用户更准确地识别。</p>
+<p>性能优化：</p>
+<p>快速检索：</p>
+<p>索引结构：使用KD树、LSH（局部敏感哈希）或Faiss等加速特征检索。</p>
+<p>缓存机制：对常见查询结果进行缓存，提升响应速度，减少重复计算。</p>
+<p>准确性提升：</p>
+<p>多模态学习：结合图像和文本信息（如商品描述、用户评价）进行联合学习，提升识别准确性。</p>
+<p>在线学习：根据用户反馈不断更新模型，提升系统的适应性和准确性。</p>
+<p>系统架构：</p>
+<p>前端：用户通过手机或平板拍摄图像，上传至服务器。</p>
+<p>后端：服务器接收图像，进行特征提取、匹配和检索，返回识别结果和相关信息。</p>
+<p>数据库：存储商品、展品或植物的图像特征向量和相关信息，支持快速检索。</p>
+<h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><p>通过深度学习技术的综合应用，能够有效提升人脸识别和拍物检索的准确性和效率，满足实际应用中的需求。这种设计不仅考虑了技术实现，还注重了性能优化，确保系统在实际应用中的可行性和可靠性。通过不断迭代和优化，系统能够适应不断变化的环境和用户需求，提供更好的用户体验。</p>
+<h3 id="分析题目"><a href="#分析题目" class="headerlink" title="分析题目"></a>分析题目</h3><h4 id="1-深度学习网络结构"><a href="#1-深度学习网络结构" class="headerlink" title="1. 深度学习网络结构"></a>1. 深度学习网络结构</h4><p>卷积神经网络（CNN）</p>
+<p>应用示例：</p>
+<p>图像分类：使用CNN对手写数字进行识别（如MNIST数据集）。</p>
+<p>目标检测：使用YOLO（You Only Look Once）模型进行实时物体检测。</p>
+<p>结构分析：</p>
+<p>卷积层：通过卷积操作提取局部特征，使用多个卷积核提取不同特征。</p>
+<p>池化层：通过最大池化或平均池化降低特征图的维度，减少计算量。</p>
+<p>全连接层：将卷积层提取的特征映射到最终的分类结果。</p>
+<p>循环神经网络（RNN）</p>
+<p>应用示例：</p>
+<p>自然语言处理：使用RNN进行文本生成（如生成诗歌或故事）。</p>
+<p>时间序列预测：使用RNN预测股票价格变化。</p>
+<p>结构分析：</p>
+<p>输入层：接收序列数据（如单词、时间序列）。</p>
+<p>隐藏层：通过循环连接处理序列信息，保持上下文信息。</p>
+<p>输出层：生成预测结果（如下一个单词或时间点的值）。</p>
+<p>生成对抗网络（GAN）</p>
+<p>应用示例：</p>
+<p>图像生成：使用GAN生成高质量的合成图像（如人脸图像）。</p>
+<p>数据增强：通过生成新样本来扩充训练数据集。</p>
+<p>结构分析：</p>
+<p>生成器：生成假图像，试图欺骗判别器。</p>
+<p>判别器：判断输入图像是真实的还是生成的。</p>
+<p>对抗训练：生成器和判别器相互博弈，提升生成图像的质量。</p>
+<h4 id="2-损失函数设计"><a href="#2-损失函数设计" class="headerlink" title="2. 损失函数设计"></a>2. 损失函数设计</h4><p>交叉熵损失</p>
+<p>应用示例：</p>
+<p>多类分类问题：在图像分类任务中，使用交叉熵损失来优化模型（如CIFAR-10数据集）。</p>
+<p>分析：</p>
+<p>定义：衡量预测概率分布与真实标签分布之间的差异。</p>
+<p>优点：适用于多类分类问题，能够有效优化模型，尤其在类别不平衡时表现良好。</p>
+<p>均方误差（MSE）</p>
+<p>应用示例：</p>
+<p>回归问题：在房价预测中，使用MSE来评估模型的预测效果。</p>
+<p>分析：</p>
+<p>定义：计算预测值与真实值之间的平方差的平均值。</p>
+<p>优点：简单易用，适合线性回归模型，能够有效反映预测误差。</p>
+<p>对比损失（Contrastive Loss）</p>
+<p>应用示例：</p>
+<p>人脸识别：在训练人脸识别模型时，使用对比损失来优化相似性和差异性。</p>
+<p>分析：</p>
+<p>定义：通过最小化相似样本之间的距离和最大化不相似样本之间的距离来训练模型。</p>
+<p>优点：有效提升模型对相似性和差异性的学习能力，适合于无监督学习场景。</p>
+<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>通过对深度学习网络结构和损失函数的分析，可以深入理解模型的设计思路和优化目标。这些例子展示了不同网络结构和损失函数在实际应用中的重要性和适用性，帮助我们更好地选择合适的模型和损失函数以满足特定任务的需求。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i></a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/14/sql%E6%80%A5%E6%95%91/" rel="prev" title="sql急救">
+      <i class="fa fa-chevron-left"></i> sql急救
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81"><span class="nav-number">1.1.</span> <span class="nav-text">1、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81"><span class="nav-number">1.2.</span> <span class="nav-text">2、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81"><span class="nav-number">1.3.</span> <span class="nav-text">3、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81"><span class="nav-number">1.4.</span> <span class="nav-text">4、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">1.5.</span> <span class="nav-text">代码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%A5%B1%E5%92%8C%E5%BA%A6%E5%AF%B9%E6%AF%94%E5%BA%A6%E4%BA%AE%E5%BA%A6%EF%BC%8C%E9%87%8D%E7%82%B9%E6%98%AF%E5%AF%B9%E6%AF%94%E5%BA%A6"><span class="nav-number">1.6.</span> <span class="nav-text">1、饱和度对比度亮度，重点是对比度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81hog%E7%89%B9%E5%BE%81"><span class="nav-number">1.7.</span> <span class="nav-text">2、hog特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%811%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.7.1.</span> <span class="nav-text">2、1手动实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%812%E5%BA%93%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.2.</span> <span class="nav-text">2、2库函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%813-hog-SVM"><span class="nav-number">1.7.3.</span> <span class="nav-text">2、3 hog+SVM</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%8C%B9%E9%85%8D"><span class="nav-number">1.8.</span> <span class="nav-text">3、直方图相似性匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E5%85%A8%E8%BF%9E%E6%8E%A5%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.1.</span> <span class="nav-text">三层全连接推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%9AGTP4o-version"><span class="nav-number">2.2.</span> <span class="nav-text">代码实现：GTP4o version</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0"><span class="nav-number">3.</span> <span class="nav-text">第三章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0"><span class="nav-number">4.</span> <span class="nav-text">第四章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RCNN-Region-based-Convolutional-Neural-Networks"><span class="nav-number">4.1.</span> <span class="nav-text">RCNN (Region-based Convolutional Neural Networks)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fast-RCNN"><span class="nav-number">4.2.</span> <span class="nav-text">Fast RCNN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Faster-RCNN"><span class="nav-number">4.3.</span> <span class="nav-text">Faster RCNN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0"><span class="nav-number">5.</span> <span class="nav-text">第五章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CBIR%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">CBIR：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBIR-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">CBIR 的基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2"><span class="nav-number">5.3.</span> <span class="nav-text">向量检索</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">5.3.1.</span> <span class="nav-text">向量检索的基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">5.3.2.</span> <span class="nav-text">向量检索的应用场景</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">5.4.</span> <span class="nav-text">向量数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">5.4.1.</span> <span class="nav-text">向量数据库的特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">5.4.2.</span> <span class="nav-text">向量数据库的应用场景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">5.4.3.</span> <span class="nav-text">常见的向量数据库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0"><span class="nav-number">6.</span> <span class="nav-text">第六章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%83%E5%80%BC%EF%BC%9A%E6%A0%87%E9%87%8F%EF%BC%88%E6%B5%AE%E7%82%B9%E6%95%B0%EF%BC%89%EF%BC%8C%E6%9C%AC%E6%84%8F%E6%98%AF%E4%BD%93%E7%8E%B0%E7%9B%B8%E5%85%B3%E6%80%A7%EF%BC%8C%E6%88%96%E8%80%85%E8%AF%B4%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%EF%BC%8C%E4%B8%80%E8%88%AC%E9%80%9A%E8%BF%87-%E4%B8%A4%E4%B8%AA%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98%E5%BE%97%E5%88%B0%EF%BC%88%E4%BD%86%E4%B8%8D%E6%98%AF%E7%9B%B4%E6%8E%A5%E7%82%B9%E4%B9%98%EF%BC%88%E7%9B%B8%E4%BC%BC%E6%80%A7%EF%BC%89%EF%BC%8C%E8%80%8C%E6%98%AF%E4%B9%98%E4%BB%A5%E4%B8%80%E4%B8%AA%E8%BD%AC%E6%8D%A2%E7%9F%A9%E9%98%B5-%E5%90%8E%EF%BC%8C%E8%80%8C%E4%B8%94%E8%BD%AC%E6%8D%A2%E5%90%8E%E7%9A%84%E7%BB%B4%E5%BA%A6%E5%8F%AF%E8%83%BD%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%8CWhy%EF%BC%9F%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">权值：标量（浮点数），本意是体现相关性，或者说依赖关系，一般通过 两个向量点乘得到（但不是直接点乘（相似性），而是乘以一个转换矩阵 后，而且转换后的维度可能发生变化，Why？）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B-%E2%97%8F%E5%8A%A0%E6%9D%83%E6%B1%82%E5%92%8C%E5%BE%97%E5%88%B0%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C%EF%BC%8C%E4%BD%86%E5%8A%A0-%E7%9A%84%E6%98%AFValue%EF%BC%88%E5%90%8C%E6%A0%B7%E9%9C%80%E8%A6%81%E8%BD%AC%E6%8D%A2%E7%9F%A9-%E9%98%B5%E5%B0%86%E8%BE%93%E5%85%A5%E8%BD%AC%E6%8D%A2%E6%88%90v%EF%BC%89%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88-%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E5%8A%A0%E8%BE%93%E5%85%A5-a-%EF%BC%9F"><span class="nav-number">6.2.</span> <span class="nav-text">自注意力 ●加权求和得到最终结果，但加 的是Value（同样需要转换矩 阵将输入转换成v），为什么 不能直接加输入 a ？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E4%B8%8D%E5%90%8C%E7%9A%84%E7%89%B9%E5%BE%81%E7%A9%BA%E9%97%B4"><span class="nav-number">6.2.1.</span> <span class="nav-text">1. 不同的特征空间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%8F%90%E9%AB%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B"><span class="nav-number">6.2.2.</span> <span class="nav-text">2. 提高模型的表达能力</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">6.2.3.</span> <span class="nav-text">3. 保持一致性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%88%86%E6%9E%90"><span class="nav-number">7.</span> <span class="nav-text">综合分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB"><span class="nav-number">7.1.</span> <span class="nav-text">人脸识别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%8D%E7%89%A9%E6%A3%80%E7%B4%A2"><span class="nav-number">7.2.</span> <span class="nav-text">拍物检索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB"><span class="nav-number">7.3.</span> <span class="nav-text">1. 人脸识别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8B%8D%E7%89%A9%E6%A3%80%E7%B4%A2"><span class="nav-number">7.4.</span> <span class="nav-text">2. 拍物检索</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">7.4.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E9%A2%98%E7%9B%AE"><span class="nav-number">8.</span> <span class="nav-text">分析题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">8.1.</span> <span class="nav-text">1. 深度学习网络结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1"><span class="nav-number">8.2.</span> <span class="nav-text">2. 损失函数设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">8.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="defy_odd"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">defy_odd</p>
+  <div class="site-description" itemprop="description">宝剑锋从磨砺出，梅花香自苦寒来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/defyodd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;defyodd" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">defy_odd</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">58k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">53 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共20.5k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

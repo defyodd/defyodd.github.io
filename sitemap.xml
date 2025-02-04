@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://defyodd.github.io/why.md/</loc>
+    
+    <lastmod>2025-02-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://defyodd.github.io/leetcode.md/</loc>
     
     <lastmod>2025-01-27</lastmod>
@@ -121,7 +130,7 @@
 
   <url>
     <loc>https://defyodd.github.io/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -129,28 +138,35 @@
   
   <url>
     <loc>https://defyodd.github.io/tags/%E6%A0%A1%E5%87%86/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://defyodd.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://defyodd.github.io/tags/leetcode/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://defyodd.github.io/tags/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://defyodd.github.io/tags/%E8%BF%B7%E8%8C%AB/</loc>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -159,21 +175,28 @@
   
   <url>
     <loc>https://defyodd.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://defyodd.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://defyodd.github.io/categories/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://defyodd.github.io/categories/%E8%BF%B7%E8%8C%AB/</loc>
+    <lastmod>2025-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

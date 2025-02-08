@@ -20,27 +20,22 @@
     var CONFIG = {"hostname":"defyodd.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":5},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="U-Net​The architecture consists of a contracting path to capture context and a symmetric expanding path that enables precise localization. 该架构由一个捕捉上下文的收缩路径和一个实现精确定位的对称扩展路径组成">
+  <meta name="description" content="Diffusion Model东西有点多，有点看不过来">
 <meta property="og:type" content="article">
-<meta property="og:title" content="U-Net">
-<meta property="og:url" content="https://defyodd.github.io/U-Net.md/index.html">
+<meta property="og:title" content="初识Diffusion model（更新ing，还差数学原理）">
+<meta property="og:url" content="https://defyodd.github.io/diffusion%20model.md/index.html">
 <meta property="og:site_name" content="This is defy_odd&#39;s blog">
-<meta property="og:description" content="U-Net​The architecture consists of a contracting path to capture context and a symmetric expanding path that enables precise localization. 该架构由一个捕捉上下文的收缩路径和一个实现精确定位的对称扩展路径组成">
+<meta property="og:description" content="Diffusion Model东西有点多，有点看不过来">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://defyodd.github.io/U-Net.md/1.png">
-<meta property="og:image" content="https://defyodd.github.io/U-Net.md/2.png">
-<meta property="og:image" content="https://defyodd.github.io/U-Net.md/3.png">
-<meta property="og:image" content="https://defyodd.github.io/U-Net.md/4.png">
-<meta property="og:image" content="https://defyodd.github.io/U-Net.md/5.png">
-<meta property="og:image" content="https://defyodd.github.io/U-Net.md/6.png">
-<meta property="article:published_time" content="2025-01-12T14:31:19.000Z">
-<meta property="article:modified_time" content="2025-01-21T09:24:34.618Z">
+<meta property="og:image" content="https://picx.zhimg.com/v2-e964e3999951d0142bccbe6667e0bec7_1440w.png">
+<meta property="article:published_time" content="2025-02-08T14:02:12.841Z">
+<meta property="article:modified_time" content="2025-02-08T14:10:05.765Z">
 <meta property="article:author" content="defy_odd">
-<meta property="article:tag" content="论文学习">
+<meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://defyodd.github.io/U-Net.md/1.png">
+<meta name="twitter:image" content="https://picx.zhimg.com/v2-e964e3999951d0142bccbe6667e0bec7_1440w.png">
 
-<link rel="canonical" href="https://defyodd.github.io/U-Net.md/">
+<link rel="canonical" href="https://defyodd.github.io/diffusion%20model.md/">
 
 
 <script id="page-configurations">
@@ -53,7 +48,7 @@
   };
 </script>
 
-  <title>U-Net | This is defy_odd's blog</title>
+  <title>初识Diffusion model（更新ing，还差数学原理） | This is defy_odd's blog</title>
   
 
 
@@ -309,7 +304,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://defyodd.github.io/U-Net.md/">
+    <link itemprop="mainEntityOfPage" href="https://defyodd.github.io/diffusion%20model.md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -322,7 +317,7 @@ mjx-container[display="true"] + br {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          U-Net
+          初识Diffusion model（更新ing，还差数学原理）
         </h1>
 
         <div class="post-meta">
@@ -331,23 +326,17 @@ mjx-container[display="true"] + br {
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2025-01-12 22:31:19" itemprop="dateCreated datePublished" datetime="2025-01-12T22:31:19+08:00">2025-01-12</time>
+              <time title="创建时间：2025-02-08 22:02:12 / 修改时间：22:10:05" itemprop="dateCreated datePublished" datetime="2025-02-08T22:02:12+08:00">2025-02-08</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-21 17:24:34" itemprop="dateModified" datetime="2025-01-21T17:24:34+08:00">2025-01-21</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
             </span>
 
@@ -364,14 +353,14 @@ mjx-container[display="true"] + br {
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.3k</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -383,52 +372,58 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="U-Net"><a href="#U-Net" class="headerlink" title="U-Net"></a>U-Net</h1><p>​<img src="/U-Net.md/1.png" class="" title="img"><br>The architecture consists of a contracting path to capture context and a symmetric expanding path that enables precise localization.</p>
-<p>该架构由一个捕捉上下文的收缩路径和一个实现精确定位的对称扩展路径组成</p>
- <span id="more"></span>
-<p><strong>Hence, Ciresan et al.trained a network in a sliding-window setup to predict the class label of each pixel by providing a local region (patch) around that pixel as input.</strong></p>
-<p><strong>This network can localize.</strong></p>
-<p><strong>Two drawbacks: slow and redundant ,trade-off between localization accuracy and the use of context.</strong></p>
-<p>The main idea in fully convolutional network is to supplement a usual contracting network by successive layers, where pooling operators are replaced by upsampling operators.</p>
-<p>全卷积网络的主要思想是通过<strong>连续的层来补充通常的收缩网络，其中池化算子被上采样算子所取代。</strong></p>
-<p>FCN的主要工作是将传统CNN后面的全连接层换成了卷积层，这样网络的输出将是热力图而非类别；同时，为解决卷积和池化导致图像尺寸的变小，使用上采样方式对图像尺寸进行恢复，并且提出一个跳级结构，让pool4和pool3之后的特征图于conv7之后的特征图相加，得到新的更加准确的分割图像。</p>
-<p>这些layers增加了输出的分辨率。为了定位，通过收缩路径(conracting path)的高分辨率特征图和上采样的输出相结合，之后的连续卷积层可以来通过这些信息来学习更加精准的输出。</p>
-<p><strong>对于上采样保留了很多的特征通道，这个网络没有全连接层，只有卷积层。</strong></p>
-<p>只包含卷积就保证了seamless segmentation of arbitrarily large images by an overlap-tile strategy。通过重叠瓦片技术对任意大图形进行无缝分割。通过mirroring the input image.</p>
-<p>To predict the pixels in the border region of the image, the missing context is extrapolated by mirroring the input image. This tiling strategy is important to apply the network to large images, since otherwise the resolution would be limited by the GPU memory.</p>
-<p><strong>针对于数据增广，文章使用了弹性变换的方式，使得网络能够学习对这种变形的不变性，而不需要在注释的图像语料库中看到这些转换。</strong></p>
-<p>对同类型的细胞的分离是很打的一个挑战。文章使用了weighted loss，针对不同地区进行不同的loss学习，让网络对边缘(border)进行学习，达到分离的效果。</p>
-<h1 id="网络结构："><a href="#网络结构：" class="headerlink" title="网络结构："></a>网络结构：</h1><p>左边：contracting path(收缩路径) 右边：expansive path(扩展路径)</p>
-<p>Contracting path :重复使用2个没有padding的3<em>3卷积，每个卷积之后包含ReLU和一个2</em>2最大池化（stride=2），同时，在每次下采样的过程中将通道数*2.</p>
-<p>Expansive path : 2<em>2卷积进行上采样同时将通道数/2， 与收缩路径中相应裁剪的特征图相连接，两个3</em>3卷积每个都跟着一个ReLU。Cropping是重要的因为在卷积操作中会造成边缘像素的丢失。</p>
-<p>最后一层有一个1*1的卷积将64个特征向量映射到每个所期待的类别。</p>
-<p>总共有23层。</p>
-<p>为了允许输出分割图的无缝平铺（见图2），重要的是选择输入平铺的大小，使所有2x2的最大池化操作都应用于一个具有偶数x和y大小的层。（换句话说，contracting path中经过卷积和ReLU之后的图像的x，y都是偶数）</p>
-<h1 id="训练："><a href="#训练：" class="headerlink" title="训练："></a>训练：</h1><p>To minimize the overhead and make maximum use of the GPU memory, we favor large input tiles over a large batch size and hence reduce the batch to a single image.</p>
-<p>为了最大限度地减少开销和最大限度地利用GPU内存，我们倾向于使用大的输入瓦片而不是大的批处理量，从而将批处理量减少到单一图像。（换句话说就是图像大，batch size小）</p>
-<p>Accordingly we use a high momentum (0.99) such that a large number of the previously seen training samples determine the update in the current optimization step.</p>
-<p>因此，我们使用一个高动量（0.99），这样大量的先前看到的训练样本决定了当前优化步骤中的更新。</p>
-<p>能量函数(energy function)一开始在热力学中被定义，用于描述系统的能量值，当能量值达到最小时系统达到稳定状态。（换句话说就是优化函数）</p>
-<p>energy function： pixel-wise soft-max + Cross entropy<br><img src="/U-Net.md/2.png" class="" title="img"></p>
-<img src="/U-Net.md/3.png" class="" title="img">
-<img src="/U-Net.md/4.png" class="" title="img">
-<h1 id="Weighted-map："><a href="#Weighted-map：" class="headerlink" title="Weighted map："></a>Weighted map：</h1><img src="/U-Net.md/5.png" class="" title="img"> 
-<img src="/U-Net.md/6.png" class="" title="img">
-<p>需要有一个好的初始化a good initialization of the weights is extremely important</p>
-<p>Ideally the initial weights should be adapted such that each feature map in the network has approximately unit variance. 理想情况下，初始权重应该被调整，使网络中的每个特征图具有近似的单位方差。</p>
-<p>可以通过一个标准差为  的高斯分布得到。</p>
-<h1 id="Data-augmentation"><a href="#Data-augmentation" class="headerlink" title="Data augmentation"></a>Data augmentation</h1><p>random elastic deformations is key concept..</p>
-<p>We generate smooth deformations using random displacement vectors on a coarse 3 by 3 grid. The displacements are sampled from a Gaussian distribution with 10 pixels standard deviation. Per-pixel displacements are then computed using bicubic interpolation. Drop-out layers at the end of the contracting path perform further implicit data augmentation</p>
-<p>我们在一个粗略的3乘3的网格上使用随机位移矢量生成平滑的变形。位移是从标准偏差为10像素的高斯分布中采样的。然后使用双三次插值计算每像素的位移。在收缩路径末端的剔除层进行进一步的隐性数据增强</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36717487/article/details/115368483">语义分割与实例分割的区别_实例分割和语义分割-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lsb2002/article/details/132005658">机器学习：监督学习、无监督学习、半监督学习、强化学习-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41731861/article/details/120511148">FCN（全卷积神经网络）详解-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/maliang_1993/article/details/82020596">仿射和弹性变换（affine and elastic transform）的python实现_图像增强弹性变换-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011622208/article/details/112566676">【数据增强】——弹性变形(Elastic Distortion)_数据增强随机弹性变换-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36474809/article/details/87931260">Unet论文详解U-Net:Convolutional Networks for Biomedical Image Segmentation-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/gaoxueyi551/article/details/105238182">深度学习中的Momentum算法原理-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43374104/article/details/106434440">梯度下降优化算法Momentum_momentum梯度下降法-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hejunqing14/article/details/50057001">能量函数在神经网络中的意义_energy function-CSDN博客</a></p>
+        <h1 id="Diffusion-Model"><a href="#Diffusion-Model" class="headerlink" title="Diffusion Model"></a>Diffusion Model</h1><p>东西有点多，有点看不过来<br><span id="more"></span></p>
+<h1 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h1><h2 id="它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。"><a href="#它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。" class="headerlink" title="它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。"></a>它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。</h2><h2 id="具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。"><a href="#具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。" class="headerlink" title="具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。"></a>具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。</h2><blockquote>
+<p>鼠鼠只看了吴恩达的diffusion model和李宏毅的diffusion model，把链接都放在下面。</p>
+<p>感觉吴恩达的视频没讲什么东西，只告诉我们怎么样进行训练，讲了一点最基础的理论，没有任何数学推导。感觉用处不算大。而且视频剪的emmm不太好评价</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mz4y1q7df/?vd_source=db8b493990184e57185c5ce1734577f2">爆火！这绝对是目前B站最新的diffusion教程，不愧是AI大佬，1小时弄清楚diffusion的工作原理，简直比刷剧还要爽！人工智能|机器学习|openAI_哔哩哔哩_bilibili</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14c411J7f2/?spm_id_from=333.337.search-card.all.click&amp;vd_source=db8b493990184e57185c5ce1734577f2">扩散模型 - Diffusion Model【李宏毅2023】_哔哩哔哩_bilibili</a></p>
+<p><a target="_blank" rel="noopener" href="https://speech.ee.ntu.edu.tw/~hylee/ml/ml2023-course-data/DDPM (v7">PowerPoint 簡報</a>.pdf) （李宏毅版本的pdf，只有后面的推导证明部分）</p>
+<p>接下来主要根据李宏毅的视频进行记录（因为另一个根本不知道能记什么……）</p>
+</blockquote>
+<h1 id="二、训练过程"><a href="#二、训练过程" class="headerlink" title="二、训练过程"></a>二、训练过程</h1><h2 id="1、noise-predictor"><a href="#1、noise-predictor" class="headerlink" title="1、noise predictor"></a>1、noise predictor</h2><p>通过人为添加一些噪声到图片当中，得到有点噪声的图片。通过这些带有人为噪声的图片做为数据集，进行noise predictor的训练。</p>
+<p>训练时，就让该模块对有噪声的图片进行预测得到噪声，跟我们人为添加的噪声进行比对，计算loss，逐渐收敛得到一个性能较好的模块。</p>
+<p><strong>这个模块是人为创造数据集为其进行训练的，和鼠鼠之前了解过的dl不太一样</strong></p>
+<h2 id="2、其余部分"><a href="#2、其余部分" class="headerlink" title="2、其余部分"></a>2、其余部分</h2><p>除了这个重要的noise predictor模块以外，还需要两个重要的参数</p>
+<p>1、time step。它是来评估噪声程度的一个重要参数，调节模块对于现有图形的认识并且动态调整从噪声图中减去噪声的程度</p>
+<p>2、文本参数。我们希望它朝我们期望的方向前进，就需要我们给它一些文本的描述，这也是需要给定的数据</p>
+<h1 id="三、diffusion模型介绍"><a href="#三、diffusion模型介绍" class="headerlink" title="三、diffusion模型介绍"></a>三、diffusion模型介绍</h1><p>目前主流都是采用三个步骤来实现：</p>
+<ol>
+<li>text encoder。先对文本进行好的编码</li>
+<li>generate model (经常是diffusion model或者autoregressive)。根据编码好的文字进行压缩图片的生成</li>
+<li>decoder。通过上一步得到的压缩图片进行解码，得到最终经过整个流程之后的图片</li>
+</ol>
+<p><strong>三个部分通常是分开训练</strong></p>
+<h2 id="三、1、-text-encoder"><a href="#三、1、-text-encoder" class="headerlink" title="三、1、 text encoder"></a>三、1、 text encoder</h2><p>FID评判指标：用于评判生成的图片和真实的图片之间的差距，检验生成的图片是否真实</p>
+<p>通过一个已经训练好的cnn网络分别进行两张图像的表征，将两张图片的结果进行对比（前提是认为它们都符合高斯分布）</p>
+<p>具体对比方式：计算两组分布之间的Frechet距离，所以两者越小越好</p>
+<p>它需要sample出很多的图片才能进行测量，视频中提到的是10k张图片。</p>
+<p>CLIP：简单说就是同时将text和image作为一个pair输入进去训练，看最后两者的距离是远还是近，主要作为text encoder</p>
+<h2 id="三、2、-decoder"><a href="#三、2、-decoder" class="headerlink" title="三、2、 decoder"></a>三、2、 decoder</h2><p>优势：不需要成对的数据</p>
+<ol>
+<li><p>中间产物为缩小的图片</p>
+<p>这种情况就很简单了，只需要训练一个网络能够放大图像就行（这个过程也有点唐，一个resize不就行了吗）</p>
+</li>
+<li><p>中间产物为latent representation</p>
+</li>
+</ol>
+<p>​    需要训练一个auto encoder，把图像变成latent representation，然后再通过这个representation训练decoder。（感觉这个过程有点唐）</p>
+<h2 id="三、3、-generation-model"><a href="#三、3、-generation-model" class="headerlink" title="三、3、 generation model"></a>三、3、 generation model</h2><h4 id="数据准备："><a href="#数据准备：" class="headerlink" title="数据准备："></a>数据准备：</h4><p>给定一张图片，先进行encoder，这个encoder得到的是latent representation（这里感觉没讲明白，我不知道这里的encoder是什么东西，但是感觉不是text encoder）</p>
+<p>得到latent representation之后，将噪声加在这个表征上面。</p>
+<h4 id="训练predictor："><a href="#训练predictor：" class="headerlink" title="训练predictor："></a>训练predictor：</h4><p>把各个加上噪声的表征、step、text作为输入数据，放进predictor进行训练。</p>
+<p>训练时要求得到一张加上噪声的表征，和放入训练的进行比对</p>
+<h4 id="使用模型"><a href="#使用模型" class="headerlink" title="使用模型"></a>使用模型</h4><p>跟训练相反，把latent representation和text放进denoise模块中，重复多次直到得到满意的图片为止</p>
+<h1 id="四、数学原理（概论率启动）（还在更新ing）"><a href="#四、数学原理（概论率启动）（还在更新ing）" class="headerlink" title="四、数学原理（概论率启动）（还在更新ing）"></a>四、数学原理（概论率启动）（还在更新ing）</h1><p>这里先贴上diffusion model的algorithm</p>
+<p><img src="https://picx.zhimg.com/v2-e964e3999951d0142bccbe6667e0bec7_1440w.png" alt="img"></p>
+<p>来解释一下各个变量是什么意思</p>
+<p>第二行的<script type="math/tex">x_0</script>，指的是干净的数据。<script type="math/tex">x_0 \sim q(x_0)</script>是指从数据集中选出一张图片。我的理解是选出一个target</p>
+<h1 id="PS：关于推理（inference）和预测（prediction）"><a href="#PS：关于推理（inference）和预测（prediction）" class="headerlink" title="PS：关于推理（inference）和预测（prediction）"></a>PS：关于推理（inference）和预测（prediction）</h1><p><strong>这里主要关注的点是推理模型和预测模型</strong></p>
+<p>推理：更加关注于确定的数据，更重要的是<strong>模型的可解释性</strong>，这是能够进行推理的重要指标。能够让外行理解模型产生预测的过程</p>
+<p>预测：更加关注于通过概率得到的结果，更加依赖以参数估计相关的置信度(感觉是概率论里面的东西)</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a target="_blank" rel="noopener" href="https://www.datascienceblog.net/post/commentary/inference-vs-prediction/">Inference vs Prediction - Data Science Blog: Understand. Implement. Succed.</a></p>
+<h1 id="通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价"><a href="#通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价" class="headerlink" title="通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价"></a><strong>通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价</strong></h1><h2 id="参考：-1"><a href="#参考：-1" class="headerlink" title="参考："></a>参考：</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huiyuanliyan/article/details/87900550">深度学习的宏观框架——训练（training）和推理（inference）及其应用场景_深度学习中inference部分是-CSDN博客</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://pytorch.ac.cn/docs/stable/generated/torch.cumsum.html">torch.cumsum — PyTorch 2.6 文档 - PyTorch 深度学习库</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/674001640">扩散模型中的Noise Scheduler - 知乎</a> （这个知乎写的挺好的，但是感觉概论率的东西有点多看不太明白）</p>
 
     </div>
 
@@ -439,7 +434,7 @@ mjx-container[display="true"] + br {
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i></a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i></a>
           </div>
 
         
@@ -448,13 +443,10 @@ mjx-container[display="true"] + br {
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/u-kan.md/" rel="prev" title="u-kan">
-      <i class="fa fa-chevron-left"></i> u-kan
+    <a href="/why.md/" rel="prev" title="迷茫">
+      <i class="fa fa-chevron-left"></i> 迷茫
     </a></div>
-      <div class="post-nav-item">
-    <a href="/GPS.md/" rel="next" title="GPS">
-      GPS <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -513,7 +505,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#U-Net"><span class="nav-number">1.</span> <span class="nav-text">U-Net</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">网络结构：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">训练：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Weighted-map%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">Weighted map：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-augmentation"><span class="nav-number">5.</span> <span class="nav-text">Data augmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference:</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Diffusion-Model"><span class="nav-number">1.</span> <span class="nav-text">Diffusion Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">一、引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%83%E7%9A%84%E8%BF%87%E7%A8%8B%E5%85%B6%E5%AE%9E%E5%BE%88%E6%B8%85%E6%99%B0%EF%BC%8C%E5%B0%B1%E6%98%AF%E6%8A%8A%E4%B8%80%E5%BC%A0%E5%85%A8%E6%98%AF%E5%99%AA%E5%A3%B0%E7%9A%84%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%EF%BC%8C%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E5%9B%BE%E7%89%87%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%9D%A5%E8%AF%B4%EF%BC%8C%E6%98%AF%E9%80%9A%E8%BF%87%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E9%A2%84%E6%B5%8B%E5%87%BA%E4%B8%80%E4%B8%AA%E5%99%AA%E5%A3%B0%E5%9B%BE%EF%BC%8C%E5%9C%A8%E5%8E%9F%E5%9B%BE%E4%B8%8A%E5%87%8F%E5%8E%BB%E8%BF%99%E4%B8%AA%E9%A2%84%E6%B5%8B%E5%87%BA%E6%9D%A5%E7%9A%84%E5%9B%BE%E7%89%87%EF%BC%8C%E7%BB%8F%E8%BF%87%E5%A4%9A%E8%BD%AE%E7%9A%84%E8%BF%AD%E4%BB%A3%E4%B9%8B%E5%90%8E%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%EF%BC%8C%E5%A5%BD%E7%9C%8B%E7%9A%84%EF%BC%8C%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%9B%BE%E7%89%87%E3%80%82"><span class="nav-number">2.2.</span> <span class="nav-text">具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">二、训练过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81noise-predictor"><span class="nav-number">3.1.</span> <span class="nav-text">1、noise predictor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%85%B6%E4%BD%99%E9%83%A8%E5%88%86"><span class="nav-number">3.2.</span> <span class="nav-text">2、其余部分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81diffusion%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.</span> <span class="nav-text">三、diffusion模型介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%811%E3%80%81-text-encoder"><span class="nav-number">4.1.</span> <span class="nav-text">三、1、 text encoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%812%E3%80%81-decoder"><span class="nav-number">4.2.</span> <span class="nav-text">三、2、 decoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%813%E3%80%81-generation-model"><span class="nav-number">4.3.</span> <span class="nav-text">三、3、 generation model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87%EF%BC%9A"><span class="nav-number">4.3.0.1.</span> <span class="nav-text">数据准备：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83predictor%EF%BC%9A"><span class="nav-number">4.3.0.2.</span> <span class="nav-text">训练predictor：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.0.3.</span> <span class="nav-text">使用模型</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%EF%BC%88%E6%A6%82%E8%AE%BA%E7%8E%87%E5%90%AF%E5%8A%A8%EF%BC%89%EF%BC%88%E8%BF%98%E5%9C%A8%E6%9B%B4%E6%96%B0ing%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">四、数学原理（概论率启动）（还在更新ing）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS%EF%BC%9A%E5%85%B3%E4%BA%8E%E6%8E%A8%E7%90%86%EF%BC%88inference%EF%BC%89%E5%92%8C%E9%A2%84%E6%B5%8B%EF%BC%88prediction%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">PS：关于推理（inference）和预测（prediction）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">6.1.</span> <span class="nav-text">参考：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E5%B8%B8%E8%AF%B4%E7%9A%84%E6%8E%A8%E7%90%86%E5%92%8C%E9%A2%84%E6%B5%8B%EF%BC%8C%E4%B8%80%E8%88%AC%E6%98%AF%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9D%9F%E8%BE%93%E5%85%A5%E6%96%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86%EF%BC%8C%E4%BA%8C%E8%80%85%E9%80%9A%E5%B8%B8%E5%8F%AF%E4%BB%A5%E7%AD%89%E4%BB%B7"><span class="nav-number">7.</span> <span class="nav-text">通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A-1"><span class="nav-number">7.1.</span> <span class="nav-text">参考：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

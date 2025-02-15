@@ -37,9 +37,10 @@
 <script type="math/tex; mode=display">
 D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{1}{q_i}}} - \sum{p_ilog_2{\frac{1}{p_i}}} = \sum{p_ilog_2{p_i}} - \sum{p_ilog_2{q_i}} = \sum{p_ilog_2{\frac{p_i}{q_i}}}</script><p>有俩重要的性质（至于这俩性质的推导我就没管了，感觉知道就行）</p>
 <p>1、非负性 <script type="math/tex">D(p||q)\geq 0</script> 当且仅当两个分布完全一样时会等于0</p>
-<p>2、非对称性 <script type="math/tex">D(p||q) \neq D(q||p)</script>，<strong>说明该指标衡量的不是距离</strong><br></p>
+<p>2、非对称性 <script type="math/tex">D(p||q) \neq D(q||p)</script>，<strong>说明该指标衡量的不是距离</strong><br><br></p>
 <p>在机器学习中，最小化KL散度有时候等价于最小化交叉熵</p>
-<p>从梯度（求导）的角度来看 <script type="math/tex">\nabla_{\theta}D(p||q_{\theta}) = \nabla_{\theta}H(p,q)-\nabla_{\theta}H(p) = \nabla_{\theta}H(p,q)</script><br><br></p>
+<p>从梯度（求导）的角度来看 <script type="math/tex">\nabla_{\theta}D(p||q_{\theta}) = \nabla_{\theta}H(p,q)-\nabla_{\theta}H(p) = \nabla_{\theta}H(p,q)</script></p>
+<p><br></p>
 <p>KL的另一种推导方法，更加直观，感觉这就写的挺好的，我就不再手打了</p>
 <img src="/%E9%A6%99%E5%86%9C%E7%86%B5%EF%BC%8C%E4%BA%A4%E5%8F%89%E7%86%B5%E5%92%8CKL%E6%95%A3%E5%BA%A6.md/1.png" class="" title="img">
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上公式最直接了,<script type="math/tex">p_i</script>是某事件的概率</p>
@@ -48,7 +49,8 @@ D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{
 <p>交叉熵：<script type="math/tex">H(p,q)= \sum{p_iI_i^q}= \sum{p_ilog_2{\frac{1}{q_i}}} = -\sum {p_ilog_2q_i}</script></p>
 <p>KL散度：</p>
 <script type="math/tex; mode=display">
-D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{1}{q_i}}} - \sum{p_ilog_2{\frac{1}{p_i}}} = \sum{p_ilog_2{p_i}} - \sum{p_ilog_2{q_i}} = \sum{p_ilog_2{\frac{p_i}{q_i}}}</script>]]></content>
+D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{1}{q_i}}} - \sum{p_ilog_2{\frac{1}{p_i}}} = \sum{p_ilog_2{p_i}} - \sum{p_ilog_2{q_i}} = \sum{p_ilog_2{\frac{p_i}{q_i}}}</script><p>终于能接着学后面的了，东西真多</p>
+]]></content>
       <categories>
         <category>学习</category>
       </categories>
@@ -57,16 +59,16 @@ D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{
       </tags>
   </entry>
   <entry>
-    <title>初识Diffusion model（更新ing，还差数学原理）</title>
-    <url>/diffusion%20model.md/</url>
-    <content><![CDATA[<h1 id="Diffusion-Model"><a href="#Diffusion-Model" class="headerlink" title="Diffusion Model"></a>Diffusion Model</h1><p>东西有点多，有点看不过来<br><span id="more"></span></p>
+    <title>初识Diffusion model（数学原理更新ing）</title>
+    <url>/diffusion_model.md/</url>
+    <content><![CDATA[<p>东西有点多，有点看不过来<br><span id="more"></span></p>
 <h1 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h1><h2 id="它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。"><a href="#它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。" class="headerlink" title="它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。"></a>它的过程其实很清晰，就是把一张全是噪声的图片生成一个新的，有意义的图片。</h2><h2 id="具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。"><a href="#具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。" class="headerlink" title="具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。"></a>具体来说，是通过一个神经网络预测出一个噪声图，在原图上减去这个预测出来的图片，经过多轮的迭代之后得到一个新的，好看的，有意思的图片。</h2><blockquote>
 <p>鼠鼠只看了吴恩达的diffusion model和李宏毅的diffusion model，把链接都放在下面。</p>
 <p>感觉吴恩达的视频没讲什么东西，只告诉我们怎么样进行训练，讲了一点最基础的理论，没有任何数学推导。感觉用处不算大。而且视频剪的emmm不太好评价</p>
 <p><a href="https://www.bilibili.com/video/BV1mz4y1q7df/?vd_source=db8b493990184e57185c5ce1734577f2">爆火！这绝对是目前B站最新的diffusion教程，不愧是AI大佬，1小时弄清楚diffusion的工作原理，简直比刷剧还要爽！人工智能|机器学习|openAI_哔哩哔哩_bilibili</a></p>
 <p><a href="https://www.bilibili.com/video/BV14c411J7f2/?spm_id_from=333.337.search-card.all.click&amp;vd_source=db8b493990184e57185c5ce1734577f2">扩散模型 - Diffusion Model【李宏毅2023】_哔哩哔哩_bilibili</a></p>
 <p><a href="https://speech.ee.ntu.edu.tw/~hylee/ml/ml2023-course-data/DDPM (v7">PowerPoint 簡報</a>.pdf) （李宏毅版本的pdf，只有后面的推导证明部分）</p>
-<p>接下来主要根据李宏毅的视频进行记录（因为另一个根本不知道能记什么……）</p>
+<p>接下来主要根据李宏毅的视频进行记录（因为另一个根本不知道能记什么……)</p>
 </blockquote>
 <h1 id="二、训练过程"><a href="#二、训练过程" class="headerlink" title="二、训练过程"></a>二、训练过程</h1><h2 id="1、noise-predictor"><a href="#1、noise-predictor" class="headerlink" title="1、noise predictor"></a>1、noise predictor</h2><p>通过人为添加一些噪声到图片当中，得到有点噪声的图片。通过这些带有人为噪声的图片做为数据集，进行noise predictor的训练。</p>
 <p>训练时，就让该模块对有噪声的图片进行预测得到噪声，跟我们人为添加的噪声进行比对，计算loss，逐渐收敛得到一个性能较好的模块。</p>
@@ -81,12 +83,12 @@ D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{
 <li>decoder。通过上一步得到的压缩图片进行解码，得到最终经过整个流程之后的图片</li>
 </ol>
 <p><strong>三个部分通常是分开训练</strong></p>
-<h2 id="三、1、-text-encoder"><a href="#三、1、-text-encoder" class="headerlink" title="三、1、 text encoder"></a>三、1、 text encoder</h2><p>FID评判指标：用于评判生成的图片和真实的图片之间的差距，检验生成的图片是否真实</p>
+<h2 id="text-encoder"><a href="#text-encoder" class="headerlink" title="text encoder"></a>text encoder</h2><p>FID评判指标：用于评判生成的图片和真实的图片之间的差距，检验生成的图片是否真实</p>
 <p>通过一个已经训练好的cnn网络分别进行两张图像的表征，将两张图片的结果进行对比（前提是认为它们都符合高斯分布）</p>
 <p>具体对比方式：计算两组分布之间的Frechet距离，所以两者越小越好</p>
 <p>它需要sample出很多的图片才能进行测量，视频中提到的是10k张图片。</p>
 <p>CLIP：简单说就是同时将text和image作为一个pair输入进去训练，看最后两者的距离是远还是近，主要作为text encoder</p>
-<h2 id="三、2、-decoder"><a href="#三、2、-decoder" class="headerlink" title="三、2、 decoder"></a>三、2、 decoder</h2><p>优势：不需要成对的数据</p>
+<h2 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a>decoder</h2><p>优势：不需要成对的数据</p>
 <ol>
 <li><p>中间产物为缩小的图片</p>
 <p>这种情况就很简单了，只需要训练一个网络能够放大图像就行（这个过程也有点唐，一个resize不就行了吗）</p>
@@ -95,22 +97,52 @@ D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{
 </li>
 </ol>
 <p>​    需要训练一个auto encoder，把图像变成latent representation，然后再通过这个representation训练decoder。（感觉这个过程有点唐）</p>
-<h2 id="三、3、-generation-model"><a href="#三、3、-generation-model" class="headerlink" title="三、3、 generation model"></a>三、3、 generation model</h2><h4 id="数据准备："><a href="#数据准备：" class="headerlink" title="数据准备："></a>数据准备：</h4><p>给定一张图片，先进行encoder，这个encoder得到的是latent representation（这里感觉没讲明白，我不知道这里的encoder是什么东西，但是感觉不是text encoder）</p>
+<h2 id="generation-model"><a href="#generation-model" class="headerlink" title="generation model"></a>generation model</h2><h4 id="数据准备："><a href="#数据准备：" class="headerlink" title="数据准备："></a>数据准备：</h4><p>给定一张图片，先进行encoder，这个encoder得到的是latent representation</p>
+<p>（这里感觉没讲明白，我不知道这里的encoder是什么东西，但是感觉不是text encoder）</p>
 <p>得到latent representation之后，将噪声加在这个表征上面。</p>
 <h4 id="训练predictor："><a href="#训练predictor：" class="headerlink" title="训练predictor："></a>训练predictor：</h4><p>把各个加上噪声的表征、step、text作为输入数据，放进predictor进行训练。</p>
 <p>训练时要求得到一张加上噪声的表征，和放入训练的进行比对</p>
 <h4 id="使用模型"><a href="#使用模型" class="headerlink" title="使用模型"></a>使用模型</h4><p>跟训练相反，把latent representation和text放进denoise模块中，重复多次直到得到满意的图片为止</p>
-<h1 id="四、数学原理（概论率启动）（还在更新ing）"><a href="#四、数学原理（概论率启动）（还在更新ing）" class="headerlink" title="四、数学原理（概论率启动）（还在更新ing）"></a>四、数学原理（概论率启动）（还在更新ing）</h1><p>这里先贴上diffusion model的algorithm</p>
-<p><img src="https://picx.zhimg.com/v2-e964e3999951d0142bccbe6667e0bec7_1440w.png" alt="img"></p>
-<p>来解释一下各个变量是什么意思</p>
+<p><br></p>
+<h1 id="四、数学原理（概论率启动）"><a href="#四、数学原理（概论率启动）" class="headerlink" title="四、数学原理（概论率启动）"></a>四、数学原理（概论率启动）</h1><h2 id="这里先贴上diffusion-model的training-algorithm"><a href="#这里先贴上diffusion-model的training-algorithm" class="headerlink" title="这里先贴上diffusion model的training algorithm"></a>这里先贴上diffusion model的training algorithm</h2><p><img src="https://picx.zhimg.com/v2-e964e3999951d0142bccbe6667e0bec7_1440w.png" alt="img"></p>
+<p>来解释一下每一行是什么意思，非常标准的伪代码</p>
 <p>第二行的<script type="math/tex">x_0</script>，指的是干净的数据。<script type="math/tex">x_0 \sim q(x_0)</script>是指从数据集中选出一张图片。我的理解是选出一个target</p>
-<h1 id="PS：关于推理（inference）和预测（prediction）"><a href="#PS：关于推理（inference）和预测（prediction）" class="headerlink" title="PS：关于推理（inference）和预测（prediction）"></a>PS：关于推理（inference）和预测（prediction）</h1><p><strong>这里主要关注的点是推理模型和预测模型</strong></p>
+<p>第三行的<script type="math/tex">t</script>, 指的是从<script type="math/tex">1-T</script>中sample出一个数，例如从1-1000中选出一个968</p>
+<p>第四行的<script type="math/tex">\epsilon</script>, 指的是从均值为1 ，所有维度上的方差都为1的normal distribution中sample出一个noise，大小和<script type="math/tex">x_0</script>一样</p>
+<p>第五行的公式</p>
+<p>首先看<script type="math/tex">\left(\sqrt{\bar{\alpha_t}}\mathbf{x_0} + \sqrt{1-\bar{\alpha_t}}\boldsymbol{\epsilon}\right)</script> 其中，<script type="math/tex">\bar{\alpha_i}\,\,,i\in \left(1 - T \right)</script>是已经固定好的值，并且随着i的增大而减小。这个是通过计算得到的。</p>
+<p>主要是为了平衡原图和噪声对于最后生成的图像的结果。</p>
+<p>当t越大时，<script type="math/tex">\bar{\alpha_t}</script>越小，<script type="math/tex">1-\bar{\alpha_t}</script>越大，生成的叠加图中原图占比就小，噪声占比就大。</p>
+<p>再看外面的<script type="math/tex">\boldsymbol{\epsilon_\theta}\left(  \sqrt{\bar{\alpha_t}}\mathbf{x_0} + \sqrt{1-\bar{\alpha_t}}\boldsymbol{\epsilon} ,t \right)</script> <u>这个是我们需要训练的noise predictor（划重点）</u>。 给一个生成的叠加图和时间t，放入该模块中，得到一个模块预测出来的noise</p>
+<p>接下来就是让噪声真值减去预测出来的noise，得到一个loss，之后再通过梯度下降去优化算式直到收敛</p>
+<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><p>先别急到sample，先来学一学极大似然估计孩子们，链接放在下面的参考里了。</p>
+<p>为什么要学？因为大家都这么干，来看看大家是怎么解决sample这个问题的。</p>
+<p>用简单的话来说就是已知一个带参数的确定分布（一个带参数的函数），但是参数未知，需要得到那个参数。</p>
+<p>因为该分布存在，所以，当参数取得最大值时，就更能确定分布，更加验证了该分布的合理性。（这一行有点绕，建议看一下视频）</p>
+<p>要得到参数的最大值，将该函数先取对数（为的是降低幂次），求导，令其等于0，解出方程。</p>
+<p>极大似然估计用人话讲就是这样。</p>
+<p>来吧，来看看极大似然估计的用处</p>
+<img src="/diffusion_model.md/1.png" class="" title="img">
+<p>这里的<script type="math/tex">P_{data}(x)</script>是真实世界的数据，<script type="math/tex">x^1,x^2,...,x^m</script>是从真实世界中抽取出来的一些真实图片。</p>
+<p>上面的<script type="math/tex">P_{\theta}(x)</script>可以认为是我们通常讲的似然函数。因为<script type="math/tex">P_{\theta}(x)</script>是我们预测出来的分布，它已经被模型预测出来了，所以它真实存在，可以作为似然函数。也可以理解为概率密度函数。</p>
+<p>后面这个约等于用的妙，把<script type="math/tex">P_{data}(x)</script>和我们想要求的<script type="math/tex">P_{\theta}(x)</script>联系在一起。</p>
+<p><strong>在等于<script type="math/tex">KL(P_{data}||P_{\theta})</script>这里，按道理应该是要等于<script type="math/tex">KL(P_{\theta}||P_{data})</script>，主要原因是它用了min，不再是之前的max，多了一个负号</strong></p>
+<p>关于KL散度，熵等名词，在我另一个文章里面有写，链接在这里<a href="https://defyodd.github.io/香农熵，交叉熵和KL散度.md/#more">香农熵，交叉熵和KL散度 | This is defy_odd’s blog</a></p>
+<p><strong>所以，在这当中，最大似然估计的值可以看成是最小KL散度</strong></p>
+<p>又接着讲VAE了，靠，又要补了</p>
+<h2 id="接下来是sampling的阶段"><a href="#接下来是sampling的阶段" class="headerlink" title="接下来是sampling的阶段"></a>接下来是sampling的阶段</h2><p><img src="https://pic4.zhimg.com/v2-66359434fb909922b327951e986fc99f_1440w.png" alt="img"></p>
+<p><br></p>
+<h1 id="PS：关于推理（Inference）和预测（Prediction）"><a href="#PS：关于推理（Inference）和预测（Prediction）" class="headerlink" title="PS：关于推理（Inference）和预测（Prediction）"></a>PS：关于推理（Inference）和预测（Prediction）</h1><p><strong>这里主要关注的点是推理模型和预测模型</strong></p>
 <p>推理：更加关注于确定的数据，更重要的是<strong>模型的可解释性</strong>，这是能够进行推理的重要指标。能够让外行理解模型产生预测的过程</p>
 <p>预测：更加关注于通过概率得到的结果，更加依赖以参数估计相关的置信度(感觉是概率论里面的东西)</p>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://www.datascienceblog.net/post/commentary/inference-vs-prediction/">Inference vs Prediction - Data Science Blog: Understand. Implement. Succed.</a></p>
-<h1 id="通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价"><a href="#通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价" class="headerlink" title="通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价"></a><strong>通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价</strong></h1><h2 id="参考：-1"><a href="#参考：-1" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://blog.csdn.net/huiyuanliyan/article/details/87900550">深度学习的宏观框架——训练（training）和推理（inference）及其应用场景_深度学习中inference部分是-CSDN博客</a></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://pytorch.ac.cn/docs/stable/generated/torch.cumsum.html">torch.cumsum — PyTorch 2.6 文档 - PyTorch 深度学习库</a></p>
+<p><strong>通常说的推理和预测，一般是训练结束输入新的数据进行处理，二者通常可以等价</strong></p>
+<p><br></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.datascienceblog.net/post/commentary/inference-vs-prediction/">Inference vs Prediction - Data Science Blog: Understand. Implement. Succed.</a> (这全英的看的我难受死了)</p>
+<p><a href="https://blog.csdn.net/huiyuanliyan/article/details/87900550">深度学习的宏观框架——训练（training）和推理（inference）及其应用场景_深度学习中inference部分是-CSDN博客</a></p>
+<p><a href="https://pytorch.ac.cn/docs/stable/generated/torch.cumsum.html">torch.cumsum — PyTorch 2.6 文档 - PyTorch 深度学习库</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/674001640">扩散模型中的Noise Scheduler - 知乎</a> （这个知乎写的挺好的，但是感觉概论率的东西有点多看不太明白）</p>
+<p><a href="https://www.bilibili.com/video/av632597949?vd_source=db8b493990184e57185c5ce1734577f2&amp;spm_id_from=333.788.player.switch">似然估计不会做？这个视频让你从头通透到脚趾！_哔哩哔哩_bilibili</a> （最大似然估计都忘记了）</p>
+<p><a href="https://blog.csdn.net/poisonchry/article/details/119027117">概率论基础 —— 8.数学期望、方差、协方差_期望和方差-CSDN博客</a> （看了一眼期望的连续是咋样的）</p>
 ]]></content>
       <categories>
         <category>学习</category>

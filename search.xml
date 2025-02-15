@@ -104,7 +104,8 @@ D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{
 <p>训练时要求得到一张加上噪声的表征，和放入训练的进行比对</p>
 <h4 id="使用模型"><a href="#使用模型" class="headerlink" title="使用模型"></a>使用模型</h4><p>跟训练相反，把latent representation和text放进denoise模块中，重复多次直到得到满意的图片为止</p>
 <p><br></p>
-<h1 id="四、数学原理（概论率启动）"><a href="#四、数学原理（概论率启动）" class="headerlink" title="四、数学原理（概论率启动）"></a>四、数学原理（概论率启动）</h1><h2 id="这里先贴上diffusion-model的training-algorithm"><a href="#这里先贴上diffusion-model的training-algorithm" class="headerlink" title="这里先贴上diffusion model的training algorithm"></a>这里先贴上diffusion model的training algorithm</h2><p><img src="https://picx.zhimg.com/v2-e964e3999951d0142bccbe6667e0bec7_1440w.png" alt="img"></p>
+<h1 id="四、数学原理（概论率启动）"><a href="#四、数学原理（概论率启动）" class="headerlink" title="四、数学原理（概论率启动）"></a>四、数学原理（概论率启动）</h1><p>这里不知道为什么旁边的目录里多了一个无序列表的标识</p>
+<h2 id="这里先贴上diffusion-model的training-algorithm"><a href="#这里先贴上diffusion-model的training-algorithm" class="headerlink" title="这里先贴上diffusion model的training algorithm"></a>这里先贴上diffusion model的training algorithm</h2><p><img src="https://picx.zhimg.com/v2-e964e3999951d0142bccbe6667e0bec7_1440w.png" alt="img"></p>
 <p>来解释一下每一行是什么意思，非常标准的伪代码</p>
 <p>第二行的<script type="math/tex">x_0</script>，指的是干净的数据。<script type="math/tex">x_0 \sim q(x_0)</script>是指从数据集中选出一张图片。我的理解是选出一个target</p>
 <p>第三行的<script type="math/tex">t</script>, 指的是从<script type="math/tex">1-T</script>中sample出一个数，例如从1-1000中选出一个968</p>
@@ -143,6 +144,7 @@ D(p||q) = H(p,q) - H(p) = \sum{p_iI^q_i} - \sum{p_iI_i^p} = \sum{p_ilog_2{\frac{
 <p><a href="https://zhuanlan.zhihu.com/p/674001640">扩散模型中的Noise Scheduler - 知乎</a> （这个知乎写的挺好的，但是感觉概论率的东西有点多看不太明白）</p>
 <p><a href="https://www.bilibili.com/video/av632597949?vd_source=db8b493990184e57185c5ce1734577f2&amp;spm_id_from=333.788.player.switch">似然估计不会做？这个视频让你从头通透到脚趾！_哔哩哔哩_bilibili</a> （最大似然估计都忘记了）</p>
 <p><a href="https://blog.csdn.net/poisonchry/article/details/119027117">概率论基础 —— 8.数学期望、方差、协方差_期望和方差-CSDN博客</a> （看了一眼期望的连续是咋样的）</p>
+<p><a href="https://bohrium.dp.tech/notebooks/74114486918">AI+分子模拟：从 Score Matching 到 Diffusion Model，从瑞士卷到丁烷 | Bohrium-玻尔科研空间站</a> （应某人要求，把这个最开始的链接放上来，但是我真的没参考里面的东西，看不懂啊（捂脸））</p>
 ]]></content>
       <categories>
         <category>学习</category>

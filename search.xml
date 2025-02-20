@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>我不理解</title>
+    <url>/why_.md/</url>
+    <content><![CDATA[<p>如果相遇注定要分离，那相遇的意义何在呢？</p>
+<p>实际上互相喜欢的人，为什么这世间就是这么残酷呢？</p>
+<p>为什么？</p>
+<p>为什么呢？</p>
+<p>我不能理解</p>
+<p>难道这世间总是这样，捉弄人间吗？</p>
+]]></content>
+      <categories>
+        <category>迷茫</category>
+      </categories>
+      <tags>
+        <tag>迷茫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>香农熵，交叉熵和KL散度</title>
     <url>/%E9%A6%99%E5%86%9C%E7%86%B5%EF%BC%8C%E4%BA%A4%E5%8F%89%E7%86%B5%E5%92%8CKL%E6%95%A3%E5%BA%A6.md/</url>
     <content><![CDATA[<p>diffusion model涉及的东西太多了，补知识ing<br><span id="more"></span><br>饮水思源：<a href="https://www.bilibili.com/video/BV1JY411q72n/?spm_id_from=333.337.search-card.all.click&amp;vd_source=db8b493990184e57185c5ce1734577f2">【10分钟】了解香农熵，交叉熵和KL散度_哔哩哔哩_bilibili</a></p>

@@ -619,6 +619,103 @@ x = (n-1)(y+z)+z</script><p>这说明，在<script type="math/tex">n=1</script>�
 <li><code>0 &lt;= citations[i] &lt;= 1000</code></li>
 </ul>
 <h2 id="题解：怪我太菜了，这还是看了题解才会的，原来我没想到。直接倒叙排序一下就好了，再看一下到哪里它的下标跟i-1小了就是答案"><a href="#题解：怪我太菜了，这还是看了题解才会的，原来我没想到。直接倒叙排序一下就好了，再看一下到哪里它的下标跟i-1小了就是答案" class="headerlink" title="题解：怪我太菜了，这还是看了题解才会的，原来我没想到。直接倒叙排序一下就好了，再看一下到哪里它的下标跟i+1小了就是答案"></a>题解：怪我太菜了，这还是看了题解才会的，原来我没想到。直接倒叙排序一下就好了，再看一下到哪里它的下标跟i+1小了就是答案</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">hIndex</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; citations)</span> </span>{</span><br><span class="line">        <span class="built_in">sort</span>(citations.<span class="built_in">begin</span>(),citations.<span class="built_in">end</span>(),<span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;()); <span class="comment">//直接倒叙排序</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;citations.<span class="built_in">size</span>();i++){</span><br><span class="line">            <span class="keyword">if</span> (citations[i]&lt;i<span class="number">+1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> citations.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+<h1 id="leetcode-LCR-134-Pow-x-n-25-3-28"><a href="#leetcode-LCR-134-Pow-x-n-25-3-28" class="headerlink" title="leetcode LCR 134. Pow(x, n) 25.3.28"></a>leetcode <a href="https://leetcode.cn/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/">LCR 134. Pow(x, n)</a> 25.3.28</h1><p>一开始直接 <script type="math/tex">pow(x,n)</script> 过了，结果一看要用快速幂，赶紧补了一下</p>
+<h2 id="题面-25"><a href="#题面-25" class="headerlink" title="题面"></a>题面</h2><p>实现 <a href="https://www.cplusplus.com/reference/valarray/pow/">pow(<em>x</em>, <em>n</em>)</a> ，即计算 x 的 n 次幂函数（即，xn）。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：x = 2.00000, n = 10</span><br><span class="line">输出：1024.00000</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：x = 2.10000, n = 3</span><br><span class="line">输出：9.26100</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：x = 2.00000, n = -2</span><br><span class="line">输出：0.25000</span><br><span class="line">解释：2-2 = 1/22 = 1/4 = 0.25</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>-100.0 &lt; x &lt; 100.0</code></li>
+<li><code>-231 &lt;= n &lt;= 231-1</code></li>
+<li><code>-104 &lt;= xn &lt;= 104</code></li>
+</ul>
+<h2 id="题解：直接放快速幂的吧"><a href="#题解：直接放快速幂的吧" class="headerlink" title="题解：直接放快速幂的吧"></a>题解：直接放快速幂的吧</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">myPow</span><span class="params">(<span class="type">double</span> x, <span class="type">int</span> n)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (x==<span class="number">1</span>||n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">double</span> ans=<span class="number">1</span>;</span><br><span class="line">        <span class="type">long</span> num = n;</span><br><span class="line">        <span class="keyword">if</span> (n&lt;<span class="number">0</span>){</span><br><span class="line">            num = - num;</span><br><span class="line">            x = <span class="number">1</span>/x;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span> (num){ <span class="comment">//重点是这几行</span></span><br><span class="line">            <span class="keyword">if</span> (num &amp; <span class="number">1</span>) ans *=x;</span><br><span class="line">            x*=x;</span><br><span class="line">            num&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+<h3 id="GPT老师对于代码的解析："><a href="#GPT老师对于代码的解析：" class="headerlink" title="GPT老师对于代码的解析："></a>GPT老师对于代码的解析：</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(num){</span><br><span class="line">    <span class="keyword">if</span>(num &amp; <span class="number">1</span>) ans *= x;  <span class="comment">// 如果 num 的最低位是 1，则累乘 x</span></span><br><span class="line">    x *= x;                <span class="comment">// x 自乘，相当于 x^(2^i)</span></span><br><span class="line">    num &gt;&gt;= <span class="number">1</span>;             <span class="comment">// 右移 num，相当于 num //= 2</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h4 id="逐行分析："><a href="#逐行分析：" class="headerlink" title="逐行分析："></a>逐行分析：</h4><ol>
+<li><strong><code>while(num)</code></strong><ul>
+<li>只要 <code>num</code> 不为 <code>0</code>，就继续循环，即处理 <code>num</code> 的二进制表示的每一位。</li>
+</ul>
+</li>
+<li><strong><code>if(num &amp; 1) ans \*= x;</code></strong><ul>
+<li><code>num &amp; 1</code> 用于检查 <code>num</code> 的最低位是否为 <code>1</code>：<ul>
+<li>如果 <code>num</code> 的最低位是 <code>1</code>，说明当前的 <code>x</code> 需要计入结果，因此将 <code>x</code> 乘入 <code>ans</code>。</li>
+<li>例如：<code>3</code> 的二进制是 <code>11</code>，最低位 <code>1</code> 说明当前的 <code>x</code> 需要乘入 <code>ans</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>x *= x;</code></strong><ul>
+<li><code>x</code> 进行平方，<code>x</code> 变成 <code>x^2</code>，然后 <code>x^4</code>，<code>x^8</code>，依次递增。</li>
+<li>这样通过二进制的方式，可以用少量的乘法完成指数计算。</li>
+</ul>
+</li>
+<li><strong><code>num &gt;&gt;= 1;</code></strong><ul>
+<li><code>num</code> 右移一位，相当于 <code>num //= 2</code>，去掉最低位，继续处理下一位。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="例子分析："><a href="#例子分析：" class="headerlink" title="例子分析："></a>例子分析：</h3><p>计算 <script type="math/tex">3^{13}</script></p>
+<h4 id="计算步骤："><a href="#计算步骤：" class="headerlink" title="计算步骤："></a>计算步骤：</h4><p><code>13</code> 的二进制是 <strong><code>1101</code></strong><br> 从右到左遍历，每一位表示是否需要乘入当前的 <code>x</code>（即 <code>3^(2^i)</code>）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>num (二进制)</th>
+<th>x (当前幂)</th>
+<th>ans（累乘结果）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1101 (13)</strong></td>
+<td>3</td>
+<td>3</td>
+<td>最低位是 1，乘入 ans</td>
+</tr>
+<tr>
+<td><strong>110 (6)</strong></td>
+<td>9</td>
+<td>3</td>
+<td>最低位是 0，跳过</td>
+</tr>
+<tr>
+<td><strong>11 (3)</strong></td>
+<td>81</td>
+<td>3 × 81 = 243</td>
+<td>最低位是 1，乘入 ans</td>
+</tr>
+<tr>
+<td><strong>1 (1)</strong></td>
+<td>6561</td>
+<td>243 × 6561 = 1594323</td>
+<td>最低位是 1，乘入 ans</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最终 <code>ans = 1594323</code>，即 <script type="math/tex">3^{13}=15943233</script>.</p>
+<h1 id="leetcode-134-加油站-25-3-28"><a href="#leetcode-134-加油站-25-3-28" class="headerlink" title="leetcode 134. 加油站 25.3.28"></a>leetcode <a href="https://leetcode.cn/problems/gas-station/">134. 加油站</a> 25.3.28</h1><p>贪心ing</p>
+<h2 id="题面-26"><a href="#题面-26" class="headerlink" title="题面"></a>题面</h2><p>在一条环路上有 <code>n</code> 个加油站，其中第 <code>i</code> 个加油站有汽油 <code>gas[i]</code> 升。</p>
+<p>你有一辆油箱容量无限的的汽车，从第 <code>i</code> 个加油站开往第 <code>i+1</code> 个加油站需要消耗汽油 <code>cost[i]</code> 升。你从其中的一个加油站出发，开始时油箱为空。</p>
+<p>给定两个整数数组 <code>gas</code> 和 <code>cost</code> ，如果你可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返回 <code>-1</code> 。如果存在解，则 <strong>保证</strong> 它是 <strong>唯一</strong> 的。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: gas = [1,2,3,4,5], cost = [3,4,5,1,2]</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 = 0 + 4 = 4 升汽油</span><br><span class="line">开往 4 号加油站，此时油箱有 4 - 1 + 5 = 8 升汽油</span><br><span class="line">开往 0 号加油站，此时油箱有 8 - 2 + 1 = 7 升汽油</span><br><span class="line">开往 1 号加油站，此时油箱有 7 - 3 + 2 = 6 升汽油</span><br><span class="line">开往 2 号加油站，此时油箱有 6 - 4 + 3 = 5 升汽油</span><br><span class="line">开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。</span><br><span class="line">因此，3 可为起始索引。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: gas = [2,3,4], cost = [3,4,3]</span><br><span class="line">输出: -1</span><br><span class="line">解释:</span><br><span class="line">你不能从 0 号或 1 号加油站出发，因为没有足够的汽油可以让你行驶到下一个加油站。</span><br><span class="line">我们从 2 号加油站出发，可以获得 4 升汽油。 此时油箱有 = 0 + 4 = 4 升汽油</span><br><span class="line">开往 0 号加油站，此时油箱有 4 - 3 + 2 = 3 升汽油</span><br><span class="line">开往 1 号加油站，此时油箱有 3 - 3 + 3 = 3 升汽油</span><br><span class="line">你无法返回 2 号加油站，因为返程需要消耗 4 升汽油，但是你的油箱只有 3 升汽油。</span><br><span class="line">因此，无论怎样，你都不可能绕环路行驶一周。</span><br></pre></td></tr></table></figure>
+<p><strong>提示:</strong></p>
+<ul>
+<li><code>gas.length == n</code></li>
+<li><code>cost.length == n</code></li>
+<li><code>1 &lt;= n &lt;= 105</code></li>
+<li><code>0 &lt;= gas[i], cost[i] &lt;= 104</code></li>
+</ul>
+<h2 id="题解：在每次遇到cursum-lt-0的时候，就证明说起点要从下一个开始"><a href="#题解：在每次遇到cursum-lt-0的时候，就证明说起点要从下一个开始" class="headerlink" title="题解：在每次遇到cursum<0的时候，就证明说起点要从下一个开始"></a>题解：在每次遇到cursum&lt;0的时候，就证明说起点要从下一个开始</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">canCompleteCircuit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; gas, vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>{</span><br><span class="line">        <span class="type">int</span> cursum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> totalsum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;gas.<span class="built_in">size</span>();i++){</span><br><span class="line">            cursum += gas[i] - cost[i];</span><br><span class="line">            totalsum += gas[i] - cost[i];</span><br><span class="line">            <span class="keyword">if</span> (cursum&lt;<span class="number">0</span>){</span><br><span class="line">                start = i<span class="number">+1</span>;</span><br><span class="line">                cursum = <span class="number">0</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (totalsum&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法学习</category>
@@ -676,28 +773,6 @@ x = (n-1)(y+z)+z</script><p>这说明，在<script type="math/tex">n=1</script>�
       </tags>
   </entry>
   <entry>
-    <title>3.23随笔</title>
-    <url>/3.23.md/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="2e67ae86bc80a55f80b6fd4ddf8a5f63be97b9044fdfa5f4baf746c83457f917">265a233087301c33a36d98e48973fc012fcabe56687dc9ff141cc2c52bc7e27b03931327efb58c05c657dc96d41948e8053a3ded407e68276ff1e1ca328b35a385f408887e2368c15914bd367de0edc097a6bbc77558f17f3d84d9db6ea642b085f77af66baa1ae39b52ede688ee3eff92d58ebbfd2082483a34b9c9888e677dab093c8fc7b5391ebc5a0cb97889d5549c916fd18571d0c0f48331b9c79292203d419698aabc6958f632b3a744c9935a882431a54e9558e6fda2e5e122180c72ce5dae841a979a50e27c7292ee97a3225972505433b70b0dbfb5102c4da43bf5ddf7eb7dfee46a6cd359c25140404ef7c6bb1abf986e141af853b9f5a4bf8a57f40818a3823bd675448de12861c4f2f93012a8688f4363cd5dcd67acf5060ca3bf5248d3a22739dd71a405eb7f84b9ae</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>3.21随笔</title>
     <url>/3.21.md/</url>
     <content><![CDATA[<h2 id="不是伤害你的人让你成长，而是你对被伤害的反思让你成长。所以不要故作大度地感谢伤害你的人-——列夫·托尔斯泰"><a href="#不是伤害你的人让你成长，而是你对被伤害的反思让你成长。所以不要故作大度地感谢伤害你的人-——列夫·托尔斯泰" class="headerlink" title="不是伤害你的人让你成长，而是你对被伤害的反思让你成长。所以不要故作大度地感谢伤害你的人  ——列夫·托尔斯泰"></a>不是伤害你的人让你成长，而是你对被伤害的反思让你成长。所以不要故作大度地感谢伤害你的人  ——列夫·托尔斯泰</h2><p>这一周发生了好多事情</p>
@@ -744,6 +819,28 @@ x = (n-1)(y+z)+z</script><p>这说明，在<script type="math/tex">n=1</script>�
 <p>慢一点没什么大不了</p>
 <p>一切都还得及</p>
 ]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3.23随笔</title>
+    <url>/3.23.md/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="2e67ae86bc80a55f80b6fd4ddf8a5f63be97b9044fdfa5f4baf746c83457f917">265a233087301c33a36d98e48973fc012fcabe56687dc9ff141cc2c52bc7e27b03931327efb58c05c657dc96d41948e8053a3ded407e68276ff1e1ca328b35a385f408887e2368c15914bd367de0edc097a6bbc77558f17f3d84d9db6ea642b085f77af66baa1ae39b52ede688ee3eff92d58ebbfd2082483a34b9c9888e677dab093c8fc7b5391ebc5a0cb97889d5549c916fd18571d0c0f48331b9c79292203d419698aabc6958f632b3a744c9935a882431a54e9558e6fda2e5e122180c72ce5dae841a979a50e27c7292ee97a3225972505433b70b0dbfb5102c4da43bf5ddf7eb7dfee46a6cd359c25140404ef7c6bb1abf986e141af853b9f5a4bf8a57f40818a3823bd675448de12861c4f2f93012a8688f4363cd5dcd67acf5060ca3bf5248d3a22739dd71a405eb7f84b9ae</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>随笔</category>
       </categories>
